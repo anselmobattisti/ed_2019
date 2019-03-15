@@ -7,9 +7,11 @@ float c2f(float);
 
 // método main
 int main (void) {
+
   float c = 0;
 
   printf("Digite a temperatura em graus Célcius: ");
+
   scanf("%f",&c);
 
   printf("A temperatura convertida em Fahrenheit é de: %f \n\n",c2f(c));
