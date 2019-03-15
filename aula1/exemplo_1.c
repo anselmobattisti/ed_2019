@@ -12,10 +12,14 @@ int main (void) {
 
   printf("Digite a temperatura em graus Célcius: ");
 
+  // a função scanf espera como parâmetro o endereço de memória
+  // onde o dado será salvo, por essa razão é necessário o & antes
+  // do nome da variável
   scanf("%f",&c);
 
   printf("A temperatura convertida em Fahrenheit é de: %f \n\n",c2f(c));
 
+  // por padrão sempre colocar o return 0 no final do main
   return 0;
 }
 
