@@ -7,19 +7,19 @@ http://www.ic.uff.br/~rosseti/
 
 Quem estiver usando o windows 10, ele tem um ubuntu lite que dá pra ativar, dentro do ubuntu só dar um
 
-´´´
+```
 apt-get update
 sudo apt-get install gcc
-´´´
+```
 
 Pra compilar:
 
-´´´
+```
 gcc -o exemplo_1.sh exemplo_1.c
-´´´
+```
 
 Para executar:
 
-´´´
+```
 ./exemplo1_sh
-´´´
+```
