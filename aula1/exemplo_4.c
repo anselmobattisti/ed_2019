@@ -6,6 +6,7 @@ int main (void) {
 
   int x = 10, y = 20, z, t;
 
+  // z vai valer x se x for maior que y
   z = x > y? x : y;
 
   t = printf("%d",z); // 20
