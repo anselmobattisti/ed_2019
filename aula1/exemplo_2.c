@@ -29,13 +29,23 @@ int main(void) {
   d++; // mesmo sendo 'char' o valor é tratado como int
   printf("%c\n",d); // o valor impresso será e
 
+  printf("=====\n");
   printf("Exemplo de operadores antes e depois da variável!\n");
-  printf("-----------\n");
+  printf("=====\n");
   printf("%d, ",e); // imprime o valor 10
   printf("%d, ",++e); // imprime o valor 11 (soma e depois imprime)
   printf("%d, ",e++); // imprime o valor 11 (imprime e depois soma)
   printf("%d",e); // imprime o valor 12
   printf("\n-----------\n\n");
+
+
+  printf("=====\n");
+  printf("Exemplo para limitar número de casas decimais!\n");
+  printf("=====\n");
+  printf("%.2f",(float) 10/3); //
+  printf("\n-----------\n\n");
+
+
 
   return 0;
 }
