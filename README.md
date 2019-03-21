@@ -24,6 +24,13 @@ Para executar:
 ./exemplo1_sh
 ```
 
+Se for usar a lib math.h ao compliar o programa é necessário passar como parâmetro -lm
+
+```
+gcc test.c -o test -lm
+```
+
+
 ## Links Importantes
 
 Dropbox com o link dos ebooks
