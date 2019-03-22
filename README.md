@@ -30,12 +30,22 @@ Se for usar a lib math.h ao compliar o programa é necessário passar como parâ
 gcc test.c -o test -lm
 ```
 
-
 ## Links Importantes
 
-Dropbox com o link dos ebooks
+1 - Link para os exemplos em sala no github
+https://github.com/anselmobattisti/ed_2019
 
+2 - Link para repositório com alguns livros inclusive o do Waldemar Celes (incompleto).
 https://www.dropbox.com/sh/bpdjglj5eywmrjd/AADnfRUejiPGjJwn2FJwwvERa?dl=0
+
+3 - Link para o site da Rosseti!:
+http://www.ic.uff.br/~rosseti/EDA_PG/2019-1/index.html
+
+4 - Link para o livro do Ceres com as anotações de aula do Anselmo:
+https://bit.ly/2USO70g
+
+5 - Livro de fundamentos em C
+https://www.dropbox.com/s/dphguvs8i9k96bl/fundamentos_da_programa.pdf
 
 ## Ementa da Disciplina
 
