@@ -41,7 +41,7 @@ void bubbleSort(int n, int *vet){
 }
 void insertionSort(int n, int *vet){
    int i, j, temp;
-   for (i = 1; i <= n - 1; i++){
+   for (i = 1; i < n; i++){
       temp = vet[i];
       j = i - 1;
       while (j >= 0 && temp < vet[j]) {

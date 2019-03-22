@@ -1,8 +1,8 @@
-//Vetores estáticos
+//Vetores estï¿½ticos
 #include <stdio.h>
 void main(){
     int n;
-    printf("Digite o tamanho do vetor, após isso, os valores:\n");
+    printf("Digite o tamanho do vetor, apÃ³s isso, os valores:\n");
     scanf(" %d", &n);
     if(n<=0)
         return 0;
