@@ -1,9 +1,19 @@
-//Ordenação - Selection Sort, Buble Sort e Insertion Sort
+//OrdenaÃ§Ã£o - Selection Sort, Buble Sort e Insertion Sort
 #include <stdio.h>
+#include <stdlib.h>
+
+const int n = 5;
+
+int menu(int *vet);
+void selectionSort(int n, int *vet);
+void bubbleSort(int n, int *vet);
+void insertionSort(int n, int *vet);
+
 void main(){
-    int vet[5] = {30, 20, 50, 40, 10};
-    menu(5, vet);
+    int vet[] = {30, 20, 50, 40, 10};
+    menu(vet);
 }
+
 void selectionSort(int n, int *vet){
     int i,j, temp;
     for(i=0; i<n; i++){
@@ -47,7 +57,7 @@ void listar(int n, int *vet){
         printf("%d ", vet[i]);
     printf("\n");
 }
-int menu(int n, int *vet){
+int menu(int *vet){
     char op;
     while(1){
         system("cls");
