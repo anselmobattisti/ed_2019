@@ -25,7 +25,11 @@ void shift_troca_string (char *str);
 
 int main(void) {
 
-  // char *str = (char*) malloc(100*sizeof(char));
+  /* Assim não funciona por essa razão
+  https://stackoverflow.com/questions/164194/why-do-i-get-a-segmentation-fault-when-writing-to-a-string-initialized-with-cha
+  char *str = (char*) malloc(100*sizeof(char));
+  str = "Amor";
+  */
 
   char str[] = "Amor";
 
