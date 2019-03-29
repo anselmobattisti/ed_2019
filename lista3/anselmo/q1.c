@@ -19,11 +19,15 @@ forem letras devem ser substituídos por ‘!’. Sabe-se que A = 65, Z = 90, a 
  *
 */
 #include <stdio.h>
+#include <stdlib.h>
 
 void shift_troca_string (char *str);
 
 int main(void) {
-  char *str = "Amor";
+
+  char *str = (char*) malloc(100*sizeof(char));
+
+  str = "Amor";
 
   shift_troca_string(str);
 
@@ -36,17 +40,29 @@ void shift_troca_string (char *str) {
   if (str[0]) {
     int c = (int) str[0];
 
-    if (c == 65) str[0] = 122;
-    if (c == 97) str[0] = 90;
+    if (c == 65) {
+      printf("a");
+      //str[0] = 122;
+    }
+
+    if (c == 97) {
+      printf("Z");
+      //str[0] = 90;
+    }
 
     if (c >= 66 && c <= 90) {
-      str[0] += 31;
+      printf("%c",str[0]+31);
+      //str[0] += 31;
     }
 
     if (c >= 98 && c <= 122) {
-      str[0] -= 33;
+      printf("%c",str[0]-33);
+      //str[0] -= 33;
     }
 
-     shift_troca_string(&str[1]);
+    // imprime a letra
+    //printf("%c",str[0]);
+
+    shift_troca_string(&str[1]);
   }
 }
