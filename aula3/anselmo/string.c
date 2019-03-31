@@ -8,17 +8,18 @@ void print_rec(char *s);
 
 int comprimento(char *s);
 
-void concatenar(char *s, char *r);
+char * concatenar(char *s, char *r);
 
 int main(void) {
 
-  char *s = (char*) malloc(5*sizeof(int));
-  char *r = (char*) malloc(5*sizeof(int));
+  char *s = (char*) malloc(5*sizeof(char));
+  char *r = (char*) malloc(5*sizeof(char));
+
   s = "abc";
   r = "efg";
-  concatenar(s,r);
+  printf("%s",concatenar(s,r));
 
-  printf("%s",s);
+  //printf("%s",s);
 
 /*
   char nome[30];
@@ -48,18 +49,22 @@ int comprimento(char *s) {
   return i;
 }
 
-void concatenar(char *s, char *r) {
+char * concatenar(char *s, char *r) {
   int tam_s = comprimento(s);
   int tam_r = comprimento(r);
-  if (tam_r <= 0) return;
 
   int tam = tam_s + tam_r;
 
-  s = (char*) realloc(s, tam*sizeof(int));
+  //s = (char*) realloc(s, tam*sizeof(char));
+  char * u = (char*) malloc(tam*sizeof(char));
 
-  int c = 0;
-  for(int i = tam_s; i < tam; i++) {
-    s[i] = r[c];
-    c++;
+  for(int i = 0; i < tam_s; i++) {
+    u[i] = s[i];
   }
+
+  for(int i = 0; i < tam_r; i++) {
+    u[tam_s+i] = r[i];
+  }
+
+  return u;
 }
