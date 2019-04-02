@@ -65,5 +65,10 @@ O sistema de avaliação da disciplina consiste na realização de duas provas (
 
 # Quadro de Estrelinhas
 
+* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b
+
 * Wilker
   * 1 estrela: 'grande contribuição sobre entrada de dados via arquivos'
