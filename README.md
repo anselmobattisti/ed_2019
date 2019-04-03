@@ -71,7 +71,7 @@ O sistema de avaliação da disciplina consiste na realização de duas provas (
 
 # Quadro de Estrelinhas
 
-* [Wilker](www.github.com/wilker)
+* [Wilker](https://www.github.com/wilker "Wilker")
   * 1 estrela: 'grande contribuição sobre entrada de dados via arquivos'
 * Ricardo Machado;
   * 1 estrela: compartilhamento de compilador online de C https://repl.it/languages/c;
