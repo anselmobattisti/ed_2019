@@ -21,17 +21,11 @@ int main(void) {
         
         int n = contarDigitos(x);
 
-        printf("N = %d \n",n);
+        
         
         int a[n];
         
         transformar(a, n, x) ;
-
-        printf("Array : [");
-        for(int i = 0; i<n;i++){
-          printf("%d",a[i]);
-        }
-         printf("] \n");
 
         int p = palindromo(a,n);
 
