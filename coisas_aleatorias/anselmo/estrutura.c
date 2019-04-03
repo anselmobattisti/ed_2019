@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include "../../utils/utils.c"
 
 struct horario {
   char tipo[50];
@@ -30,6 +31,10 @@ float area(Circulo c);
 int interior(Circulo c, Ponto p);
 
 int main(void) {
+
+  int num[3] = {1,2,3};
+
+  imprime(num, 3);
 
   /*
   struct horario agora;
