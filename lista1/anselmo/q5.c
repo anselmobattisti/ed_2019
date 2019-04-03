@@ -8,8 +8,8 @@ programa deve ser “1100”. Seu programa para quando n for menor que zero
 char bin[8];
 
 int main(void) {
-  int n, r;
-  int i = 0;
+
+  int n, i = 0;
   printf("\nDigite um número menor do que 255: ");
   scanf("%d",&n);
 
