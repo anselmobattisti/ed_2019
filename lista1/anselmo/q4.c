@@ -11,23 +11,41 @@ int isPrime(int n);
 
 int main(void) {
   int n = 0;
-
   while (n >= 0) {
     printf("\nDigite um número inteiro:");
     scanf("%d", &n);
 
     printf("\nOs %d números primos maiores que %d são:\n\n",n,n);
+
+    // versão não otimizada
+    n++;
+    for (int i = n; n > 1; i++) {
+      int primo = 1;
+      for(int j = 2; j <= i/2; j++) {
+        if (i%j == 0) {
+          primo = 0;
+          break;
+        }
+      }
+      if(primo) {
+        printf("%d - ",i);
+        n--;
+      }
+    }
+
+    /* versão 1
     int count = n;
     while (count) {
+
       if (isPrime(n)) {
         count--;
         printf("%d - ", n);
       }
       n++;
     }
+    */
     printf("\n===============\n\n");
   }
-
   return 0;
 }
 
