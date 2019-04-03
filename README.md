@@ -24,6 +24,12 @@ Para executar:
 ./exemplo1_sh
 ```
 
+Para executar passando um arquivo como entrada stdin:
+
+```
+./exemplo1_sh < arquivo
+```
+
 Se for usar a lib math.h ao compliar o programa é necessário passar como parâmetro -lm
 
 ```
@@ -65,7 +71,7 @@ O sistema de avaliação da disciplina consiste na realização de duas provas (
 
 # Quadro de Estrelinhas
 
-* Wilker
+* [Wilker](www.github.com/wilker)
   * 1 estrela: 'grande contribuição sobre entrada de dados via arquivos'
 * Ricardo Machado;
   * 1 estrela: compartilhamento de compilador online de C https://repl.it/languages/c;
