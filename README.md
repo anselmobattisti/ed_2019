@@ -36,6 +36,13 @@ Se for usar a lib math.h ao compliar o programa é necessário passar como parâ
 gcc test.c -o test -lm
 ```
 
+A biblioteca de utilidades (utils) contém as seguintes funções:
+ ```
+ *  void imprime(int *vet, int n);
+```
+  
+ Para saber como adicioná-la ao seu programa veja[aqui](https://link)
+
 ## Links Importantes
 
 1 - Link para os exemplos em sala no github
