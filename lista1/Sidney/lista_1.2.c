@@ -1,5 +1,10 @@
-// Escrito por Sidney Loyola de Sá
-// Data: 30/03/2019
+/*
+Escrito por Sidney Loyola de Sá
+Data: 30/03/2019
+Q2) Implemente um programa que, infinitamente, receba, como parâmetro de entrada, um número
+n e retorne os n primeiros números primos existentes. Seu programa para quando n for menor ou
+igual a zero.
+*/
 
 #include <stdio.h>
 #include <math.h> //lembrar de incluir o -lm no final na hora de compilar
