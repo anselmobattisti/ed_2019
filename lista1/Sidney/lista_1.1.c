@@ -48,9 +48,9 @@ int main(void) {
 				c = 1;
 			}
 		}	
-    if(c>c1){
-					c1 = c;					
-				}	
+    		if(c>c1){
+			c1 = c;					
+		}	
 		printf("Sequencia : ");
 		for(int i = 0; i< n; i++){
 			printf("%d ", v[i]);			
