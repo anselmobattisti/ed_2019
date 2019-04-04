@@ -1,5 +1,10 @@
-// Escrito por Sidney Loyola de Sá
-// Data: 30/03/2019
+/*
+Escrito por Sidney Loyola de Sá
+Data: 30/03/2019
+Q2) Implemente um programa que, infinitamente, receba, como parâmetro de entrada, um número
+n e retorne os n primeiros números primos existentes. Seu programa para quando n for menor ou
+igual a zero.
+*/
 
 #include <stdio.h>
 #include <math.h> //lembrar de incluir o -lm no final na hora de compilar
@@ -12,10 +17,10 @@ int main(void) {
 	
 	int n,aux,naoEncontrar;
 	
-	n = 1;
+
 	
 	
-	while (n > 0){
+	while (1){
 		
 		naoEncontrar = 1;
 		aux = 0;
@@ -23,6 +28,8 @@ int main(void) {
 		printf("Insira o valor de n: ");
 		scanf("%d", &n);
 		
+    if(n<=0)return 0;
+
 		int v[n];
 		
 		
@@ -63,7 +70,6 @@ int primo(int n) {
 	}
 	
 }
-
 
 
 
