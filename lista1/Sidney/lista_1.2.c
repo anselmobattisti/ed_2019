@@ -17,10 +17,10 @@ int main(void) {
 	
 	int n,aux,naoEncontrar;
 	
-	n = 1;
+
 	
 	
-	while (n > 0){
+	while (1){
 		
 		naoEncontrar = 1;
 		aux = 0;
@@ -28,6 +28,8 @@ int main(void) {
 		printf("Insira o valor de n: ");
 		scanf("%d", &n);
 		
+    if(n<=0)return 0;
+
 		int v[n];
 		
 		
@@ -68,7 +70,6 @@ int primo(int n) {
 	}
 	
 }
-
 
 
 
