@@ -1,6 +1,17 @@
-// Escrito por Sidney Loyola de Sá
-// Data: 30/03/2019
+/*
+Escrito por Sidney Loyola de Sá
+Data: 30/03/2019
 
+Q1) Uma forma simples e eficiente de calcular todos os números primos até um certo valor n é o
+método da Peneira de Eratosthenes. O processo é simples: escrevem-se todos os valores entre 2
+e n (limite máximo). Em seguida, faz-se um círculo em volta do 2, marcando como primo e riscamse todos os seus múltiplos. Continua-se a fazer círculos em volta do menor inteiro que se
+encontra, eliminando todos os seus múltiplos. Quando não restarem números sem terem círculos
+à volta ou traços por cima, os números com círculos à volta representam todos os primos até n. A
+figura seguinte apresenta o método para n = 40.
+Escreva um programa que implemente a Peneira de Eratosthenes. Você deve ler o valor n e
+mostrar todos os números primos encontrados.
+
+*/
 #include <stdio.h>
 #include <math.h> //lembrar de incluir o -lm no final na hora de compilar
 
