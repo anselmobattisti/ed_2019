@@ -1,6 +1,21 @@
-// Escrito por Sidney Loyola de Sá
-// Data: 30/03/2019
-// Duvidas quanto ao m negativo
+/*
+Escrito por Sidney Loyola de Sá
+ Data: 30/03/2019
+ 
+ Q6) Supondo as seguintes declarações:
+int x, y, z;
+int teste;
+x = 5;
+y = x++;
+z = x--;
+Informe os valores de teste, x, y e z depois da avaliação das seguintes expressões:
+(a) teste = !y == !x;
+(b) teste = ((x++ > y) || (--z <= y));
+(c) teste = ((!x) || (!(!z)));
+(d) teste = (((x + y) > z) && (x++));
+(e) teste = x && y + !3 || 4; 
+ */
+
 
 #include <stdio.h>
 
