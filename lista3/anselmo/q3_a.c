@@ -13,6 +13,8 @@ int* transf_i_p (int *vet, int n);
 
 int main(void) {
 
+  printf("%d\n\n",(int) sizeof(void *) );
+
   int n = 6;
   int vet[] = {10,11,20,35,45,99};
 
