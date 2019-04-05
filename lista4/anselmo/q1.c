@@ -158,6 +158,10 @@ int contem_repeticao_coluna(int** mat, int c) {
   return s;
 }
 
+/*
+  l = representa a linha inicial do bloco que será verificado
+  c = representa a coluna inicial do bloco que será verificada
+*/
 int contem_repeticao(int** mat, int l, int c) {
   int t[9] = {0,0,0,0,0,0,0,0,0};
   int s = 1;
