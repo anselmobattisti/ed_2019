@@ -84,3 +84,5 @@ O sistema de avaliação da disciplina consiste na realização de duas provas (
   * 1 estrela: compartilhamento de compilador online de C https://repl.it/languages/c;
 * Jane:
   * 1 estrela: muito gentilmente tirou fotos do livro de C para a galera
+* Raissa:
+  * 1 estrela: achou slide de todos os capítulos do livro do Celes.
