@@ -13,12 +13,14 @@ dinamicamente.
 #include <stdlib.h>
 
 char** s2ss(char *str);
+char** s2ss_2(char *str);
 
 int main(void) {
 
   char s[] = "/Fla/Flu/Bota/";
 
-  char** s2 = s2ss(s);
+  //char** s2 = s2ss(s);
+  char** s2 = s2ss_2(s);
 
   for (int i = 0; i < 3; i++){
     printf("\n");
@@ -65,4 +67,35 @@ char** s2ss(char *str) {
     i++;
   }
   return n;
+}
+
+char** s2ss_2(char *str) {
+  int q = 0, t = 0, ant = 0, i, j, k;
+
+  for( t = 0; str[t] != '\0'; t++) {
+    if (str[t] == '/') q++;
+  }
+
+  char **x = (char**) malloc(sizeof(char*)*(q+1));
+
+  int c = 0;
+
+  for(i = 0; i < t; i++) {
+    if(str[i] == '/') {
+      ant = i+1;
+      for(j = ant; (j < t && str[j] != '/');j++);
+      int ts = j - ant;
+      if (ts > 1) {
+        x[c] = (char*) malloc(sizeof(char)*(ts+1));
+        int p = 0;
+        for(k = ant; k < j; k++) {
+          x[c][p] = str[k];
+          p++;
+        }
+        c++;
+      }
+      i = j-1;
+    }
+  }
+  return x;
 }

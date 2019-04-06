@@ -43,7 +43,8 @@ int main(void) {
 
 }
 
-
+/*
+Versão 1 - funciona mas gasta mais processamento
 int** mult (int m1, int n1, int **mat1, int m2, int n2, int **mat2) {
 
   if (n1 != m2) {
@@ -62,6 +63,31 @@ int** mult (int m1, int n1, int **mat1, int m2, int n2, int **mat2) {
   }
 
   return n;
+}
+*/
+int** mult (int m1, int n1, int **mat1, int m2, int n2, int **mat2) {
+
+  int **aux;
+  if (n1 != m2) {
+    printf("Não possível realizar multiplicação");
+    return aux;
+  }
+
+  aux = (int**) malloc(sizeof(int*)*m1);
+  for (int i=0; i < m1; i++) {
+    aux[i] = (int*) malloc(sizeof(int)*n2);
+  }
+
+  for (int i = 0; i < m1; i++) {
+    for(int j = 0; j < n2; j++) {
+      aux[i][j] = 0;
+      for (int k = 0; k < n1; k++) {
+        aux[i][j] += mat1[i][k] * mat2[k][j];
+      }
+    }
+  }
+
+  return aux;
 }
 
 int imprimir_matriz(int** mat, int l, int c) {
