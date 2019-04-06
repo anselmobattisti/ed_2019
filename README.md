@@ -85,4 +85,4 @@ O sistema de avaliação da disciplina consiste na realização de duas provas (
 * Jane:
   * 1 estrela: muito gentilmente tirou fotos do livro de C para a galera
 * Raissa:
-  * 1 estrela: achou slide de todos os capítulos do livro do Celes.
+  * 1 estrela: achou slide de todos os capítulos do livro do Celes. http://www.inf.puc-rio.br/~inf1620/material.html

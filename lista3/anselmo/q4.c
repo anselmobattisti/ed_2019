@@ -13,7 +13,7 @@ void retira_inicio_n (char *str, int n);
 
 int main(void) {
 
-  int n = 3;
+  int n = 7;
   char s[] = "abcdefghi";
 
   retira_inicio_n(s,n);
@@ -32,6 +32,9 @@ void retira_inicio_n (char *str, int n) {
     return;
   }
 
-  // faz com que a posição 0 do vetor seja a posição n
-  str[0] = str[n];
+  int i;
+  for(i = 0; i < tam -n; i++) {
+    str[i] = str[i+n];
+  }
+  str[i] = '\0';
 }
