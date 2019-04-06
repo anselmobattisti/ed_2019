@@ -40,7 +40,7 @@ A biblioteca de utilidades (utils) contém as seguintes funções:
  ```
  *  void imprime(int *vet, int n);
 ```
-  
+
  Para saber como adicioná-la ao seu programa veja[aqui](https://link)
 
 ## Links Importantes
@@ -82,3 +82,5 @@ O sistema de avaliação da disciplina consiste na realização de duas provas (
   * 1 estrela: 'grande contribuição sobre entrada de dados via arquivos'
 * Ricardo Machado;
   * 1 estrela: compartilhamento de compilador online de C https://repl.it/languages/c;
+* Jane:
+  * 1 estrela: muito gentilmente tirou fotos do livro de C para a galera
