@@ -24,47 +24,33 @@ int** cria_matriz(int i, int j, int x);
 int imprimir_matriz(int** mat, int l, int c);
 
 int main(void) {
-  int n = 0;
-
+  int n;
   scanf("%d",&n);
-
-  int** mat = cria_matriz(n,n,8);
-
+  printf("\nHadamard Table");
+  printf("\n--------------\n");
+  int** mat = cria_matriz(n,n,0);
   hadamard(mat, n, 1);
-
   imprimir_matriz(mat, n, n);
-
   return 0;
 }
 
 void hadamard(int** mat, int n, int i) {
-
-  if (i > n) {
-    return;
-  }
+  if (i > n) return;
   if (i == 1) {
     mat[0][0] = 1;
   } else {
-    int i_final = i/2;
-    int j_final = i/2;
-
-    for(int k = 0; k < i_final; k++) {
-      for(int w = 0; w < j_final; w++) {
-
-        // direito
-        mat[k][j_final+w] = mat[k][w];
-
-        // abaixo
-        mat[i_final+k][w] = mat[k][w];
-
-        // invetido
-        mat[i_final + k][j_final + w] = !mat[k][w];
-
+    int final = i/2;
+    for(int k = 0; k < final; k++) {
+      for(int w = 0; w < final; w++) {
+        // copia o valor do elemento para o lado direito
+        mat[k][final+w] = mat[k][w];
+        // copia o valor do elemento para baixo
+        mat[final+k][w] = mat[k][w];
+        // copia o valor invertido do elemento para o lado direito abaixo
+        mat[final + k][final + w] = !mat[k][w];
       }
     }
-    printf("\n\n");
   }
-
   hadamard(mat, n, i*2);
 }
 
