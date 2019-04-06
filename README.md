@@ -57,6 +57,8 @@ http://www.ic.uff.br/~rosseti/EDA_PG/2019-1/index.html
 4 - Link para o livro do Ceres com as anotações de aula do Anselmo:
 https://bit.ly/2USO70g
 
+4.1 - link para slides do livro http://www.inf.puc-rio.br/~inf1620/material.html
+
 5 - Livro de fundamentos em C
 https://www.dropbox.com/s/dphguvs8i9k96bl/fundamentos_da_programa.pdf
 
@@ -85,4 +87,4 @@ O sistema de avaliação da disciplina consiste na realização de duas provas (
 * Jane:
   * 1 estrela: muito gentilmente tirou fotos do livro de C para a galera
 * Raissa:
-  * 1 estrela: achou slide de todos os capítulos do livro do Celes. http://www.inf.puc-rio.br/~inf1620/material.html
+  * 1 estrela: achou slide de todos os capítulos do livro do Ceres. http://www.inf.puc-rio.br/~inf1620/material.html
