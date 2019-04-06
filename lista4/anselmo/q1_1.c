@@ -3,13 +3,8 @@
 
 int main(void) {
 
-  int **m = (int**) malloc(sizeof(int*) * 9);
-  for (int i = 0; i < 9; i++) {
-    m[i] = (int*) malloc(sizeof(int)*9);
-  }
-
  // gera entrada com sucesso
-  int aux[9][9] = {
+  int m[9][9] = {
       {5,3,4,6,7,8,9,1,2},
       {6,7,2,1,9,5,3,4,8},
       {1,9,8,3,4,2,5,6,7},
@@ -20,13 +15,6 @@ int main(void) {
       {2,8,7,4,1,9,6,3,5},
       {3,4,5,2,8,6,1,7,9}
   };
-
-  for (int i = 0; i < 9; i++) {
-    for (int j = 0; j < 9; j++) {
-      m[i][j] = aux[i][j];
-    }
-  }
-  ///////////////////////////////
 
   int sol = 1;
 
