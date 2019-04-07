@@ -14,13 +14,14 @@ dinamicamente.
 
 char** s2ss(char *str);
 char** s2ss_2(char *str);
+char** s2ss_3(char *str);
 
 int main(void) {
 
   char s[] = "/Fla/Flu/Bota/";
 
   //char** s2 = s2ss(s);
-  char** s2 = s2ss_2(s);
+  char** s2 = s2ss_3(s);
 
   for (int i = 0; i < 3; i++){
     printf("\n");
@@ -98,4 +99,33 @@ char** s2ss_2(char *str) {
     }
   }
   return x;
+}
+
+char** s2ss_3(char *str) {
+  int j, qtd = 0;
+  char **aux;
+  for(int i = 0; str[i] != '\0'; i++) {
+    if (str[i] == '/') {
+      qtd++;
+      if (qtd == 1) {
+        aux = (char**) malloc(sizeof(char*)*qtd);
+      } else {
+        aux = (char**) realloc(aux, sizeof(char*)*qtd);
+      }
+
+      for(j = i+1; (str[j] != '/' && str[j] != '\0' );j++);
+      int ts = j - i;
+      if (ts > 1) {
+        aux[qtd-1] = (char*) malloc(sizeof(char)*(ts+1));
+        int p = 0;
+        for(int k = i+1; k < j; k++) {
+          aux[qtd-1][p] = str[k];
+          p++;
+        }
+      }
+      i = j-1;
+
+    }
+  }
+  return aux;
 }
