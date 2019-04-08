@@ -112,7 +112,6 @@ char** s2ss_3(char *str) {
       } else {
         aux = (char**) realloc(aux, sizeof(char*)*qtd);
       }
-
       for(j = i+1; (str[j] != '/' && str[j] != '\0' );j++);
       int ts = j - i;
       if (ts > 1) {
@@ -124,7 +123,6 @@ char** s2ss_3(char *str) {
         }
       }
       i = j-1;
-
     }
   }
   return aux;
