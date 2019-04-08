@@ -1,5 +1,14 @@
 # Estrutura de Dados
 
+## Datas Importantes
+
+* P1: a definir
+* P2: 27/06/2019
+* Entrega de todas as notas da disciplina: 04/07/2019
+
+
+## Informações do Repositório
+
 Esse repositório contém os exemplos e exercícios feitos na disciplina de Estrutura de Dados do primeiro semestre de 2019.
 
 Professora Isabel Rosseti.

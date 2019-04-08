@@ -1,4 +1,4 @@
-h1. 14/03/2019
+#Data: 14/03/2019
 
 * Apresentação do curso: objetivos, tópicos a serem apresentados, critério de avaliação a ser empregado e literatura utilizada;
 * Introdução a linguagem C: tipos e variáveis;
