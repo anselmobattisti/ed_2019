@@ -1,4 +1,4 @@
-#Data: 28/03/2019
+# Data: 28/03/2019
 
 * Implementação das versões iterativa e recursiva do algoritmo de ordenação selection sort;
 * Ordenação de vetor usando o algoritmo de ordenação quicksort, e apresentação da função qsort presente em stdlib.h;
