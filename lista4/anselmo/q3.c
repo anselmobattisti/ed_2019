@@ -106,15 +106,15 @@ char** s2ss_3(char *str) {
   char **aux;
   for(int i = 0; str[i] != '\0'; i++) {
     if (str[i] == '/') {
-      qtd++;
-      if (qtd == 1) {
-        aux = (char**) malloc(sizeof(char*)*qtd);
-      } else {
-        aux = (char**) realloc(aux, sizeof(char*)*qtd);
-      }
       for(j = i+1; (str[j] != '/' && str[j] != '\0' );j++);
       int ts = j - i;
       if (ts > 1) {
+        qtd++;
+        if (qtd == 1) {
+          aux = (char**) malloc(sizeof(char*)*qtd);
+        } else {
+          aux = (char**) realloc(aux, sizeof(char*)*qtd);
+        }
         aux[qtd-1] = (char*) malloc(sizeof(char)*(ts+1));
         int p = 0;
         for(int k = i+1; k < j; k++) {
