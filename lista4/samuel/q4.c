@@ -30,7 +30,7 @@ int main()
 
 	scanf("%d",&n);
 
-	if(((n - 1) & n)) printf("Impossivel gera a matriz para este N!\n");
+	if(((n - 1) & n)) printf("Impossivel gerar a matriz para este N!\n");
 	else
 	{
 		int **mat = (int **)malloc(n*sizeof(int*));
