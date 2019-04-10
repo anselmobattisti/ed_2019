@@ -56,7 +56,7 @@ int main(void) {
       }
     }
 
-    printf("Instancia %d ",instancia);
+    printf("Instancia %d",instancia);
     if (sol) {
       printf("\nSIM\n\n");
     } else {
