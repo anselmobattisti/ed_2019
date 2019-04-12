@@ -1,2 +1,4 @@
 *.sh
 .vscode
+*prog*
+aula5/anselmo/prog
