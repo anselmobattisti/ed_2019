@@ -14,7 +14,9 @@ typedef struct lc
 TLC* inicializa();
 TLC* inserir_o1(TLC* l, int x);
 TLC* inserir_on(TLC* l, int x);
+TLC* retira(TLC* l, int x);
 
+void libera(TLC* l);
 void imprimir(TLC* l);
 
 int main(void) {
@@ -25,8 +27,56 @@ int main(void) {
   l = inserir_o1(l, 30);
   l = inserir_on(l, 31);
 
+  l = retira(l,31);
+
+  // libera(l);
   imprimir(l);
   return 0;
+}
+
+TLC* retira(TLC* l, int x) {
+  if (!l) return l;
+
+  if (l->info == x && l == l->prox) {
+    free(l);
+    return NULL;
+  }
+
+  TLC *ant = l, *p = l->prox;
+
+  while (p != ant && p->info != x) {
+    ant = p;
+    p = p->prox;
+  }
+
+  if (p == l && p->info != x)
+    return l;
+
+  if (p == l) {
+    l = l->prox;
+  }
+
+  ant->prox = p->prox;
+  free(p);
+  return l;
+}
+
+void libera(TLC* l) {
+  if (!l) return;
+
+  if (l->prox == l) {
+    free(l);
+    return;
+  }
+
+  TLC *p = l->prox, *q;
+
+  while (p != l) {
+    q = p;
+    p = p->prox;
+    free(q);
+  }
+  free(l);
 }
 
 TLC* inserir_o1(TLC* l, int x){
