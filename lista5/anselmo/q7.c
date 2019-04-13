@@ -34,7 +34,7 @@ int main(void) {
 
 void i_p(TLSE* l) {
 
-  TLSE *lp, *li, *p = l;
+  TLSE *lp, *li, *p = l, *aux;
 
   lp = inicializa();
   li = inicializa();
@@ -48,20 +48,20 @@ void i_p(TLSE* l) {
     p = p->prox;
   }
 
+  // imprime(li);
+  // imprime(lp);
+
   // alterar todos os elementos da lista original
   // com base nas cópias
   p = li;
-  TLSE *aux = l;
+  aux = l;
   while (p) {
     aux->info = p->info;
+    aux = aux->prox;
     p = p->prox;
-    if (p->prox) {
-      aux = aux->prox;
-    }
   }
 
   p = lp;
-  TLSE *aux = l;
   while (p) {
     aux->info = p->info;
     p = p->prox;
