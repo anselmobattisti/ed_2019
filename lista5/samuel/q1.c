@@ -62,7 +62,6 @@ int main(void)
 	printa(lista);
 	inverte(lista);
 	printa(lista);
-	inverte2(lista);
-	printa(lista);
+
 	return 0;
 }
