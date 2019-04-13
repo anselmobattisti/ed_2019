@@ -34,29 +34,20 @@ int main(void) {
 
 TLSE* ordena(TLSE *l){
   if (!l) return l;
-
-  TLSE *l_aux, *p = l, *q = NULL;
-  l_aux = inicializa();
-
-  int menor;
-  int atual;
-
+  TLSE *p = l, *q = NULL;
   while (p) {
-    menor = p->info;
     q = p->prox;
     while (q) {
-      if (q->info < menor && q->info > atual) {
-        menor = q->info;
+      if (p->info > q->info) {
+        int t = p->info;
+        p->info = q->info;
+        q->info = t;
       }
       q = q->prox;
     }
-
-    atual = menor;
-    l_aux = ins_fim(l_aux, menor);
     p = p->prox;
   }
-
-  return l_aux;
+  return l;
 }
 
 void imprime(TLSE*l) {
