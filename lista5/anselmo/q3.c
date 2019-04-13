@@ -55,6 +55,8 @@ void ultimo_anterior(TLSE*l) {
 TLSE* desloca(TLSE *l, int n) {
   TLSE *p = l, *ant = NULL;
 
+  // Se p existir ao final do while
+  // ele será o último elemento da lista
   while (p->prox) {
     ant = p;
     p = p->prox;
@@ -63,7 +65,6 @@ TLSE* desloca(TLSE *l, int n) {
   // a lista ou não tem elemento ou tem apenas 1 elemento;
   if (!p || !p->prox) return l;
 
-  // Se p existir ele será o último elemento da lista
   if (n%2 == 0) {
     p->prox = l;
     l = l->prox;
