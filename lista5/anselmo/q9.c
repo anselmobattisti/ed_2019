@@ -40,15 +40,11 @@ int main(void) {
 }
 
 TLSE* junta_lista(TLSE *l1, TLSE *l2){
-
   TLSE *p = l1;
-
   while (p->prox) {
     p = p->prox;
   }
-
   p->prox = l2;
-
   return l1;
 }
 
