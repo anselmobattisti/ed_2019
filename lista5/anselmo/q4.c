@@ -30,7 +30,9 @@ int main(void) {
 
   l = ins_ini(l, 1, 80);
   l = ins_ini(l, 2, 90);
+  l = ins_ini(l, 1, 80);
   l = ins_ini(l, 3, 100);
+  l = ins_ini(l, 1, 80);
 
   n = copia(l);
 
