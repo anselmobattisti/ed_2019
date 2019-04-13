@@ -1,3 +1,10 @@
+/*
+Q3) Considerando a declaração da Q1, escreva uma função em C que, dada uma lista l
+qualquer, desloque uma vez os elementos de l, de acordo com n. Se n é ímpar, o
+elemento que está na última posição passa a ser o primeiro quando a lista é deslocada.
+Senão, o elemento que está na primeira posição passa a ser o último. O protótipo desta
+função é o seguinte: TLSE* desloca (TLSE* l, int n).
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -65,12 +72,11 @@ TLSE* desloca(TLSE *l, int n) {
   // a lista ou não tem elemento ou tem apenas 1 elemento;
   if (!p || !p->prox) return l;
 
+  p->prox = l;
   if (n%2 == 0) {
-    p->prox = l;
     l = l->prox;
     p->prox->prox = NULL;
   } else {
-    p->prox = l;
     l = p;
     ant->prox = NULL;
   }
