@@ -26,7 +26,7 @@ int main(void) {
   l = ins_ini(l, 2);
   l = ins_ini(l, 3);
   l = ins_ini(l, 4);
-  l = ins_ini(l, 5);
+  //l = ins_ini(l, 5);
   inverte(l);
   imprime(l);
 }
@@ -51,6 +51,7 @@ void inverte(TLSE*l) {
 
   for (int i = 1; i <= (int)total/2; i++) {
     p = atual;
+    q = p;
     while (p != ultimo) {
       q = p;
       p = p->prox;
