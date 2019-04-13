@@ -11,6 +11,7 @@ TLSE* ins_ini(TLSE *l, int x);
 TLSE* troca_cabeca(TLSE*l, int n);
 TLSE* desloca(TLSE*l, int n);
 void imprime(TLSE*l);
+void ultimo_anterior(TLSE*l);
 
 int main(void) {
   TLSE *l = inicializa();
@@ -39,27 +40,37 @@ int main(void) {
   imprime(l);
 }
 
-TLSE* desloca(TLSE *l, int n) {
-  TLSE *p = l, *q = NULL, *ant = NULL;
+void ultimo_anterior(TLSE*l) {
+  TLSE *p = l, *ant = NULL;
 
-  while (p) {
-    if (p->prox)
-      ant = p;
+  while (p->prox) {
+    ant = p;
     p = p->prox;
-    if (p)
-      q = p;
+  }
+
+  printf("\n - Anterior: %d\n",ant->info);
+  printf("\n - Último: %d\n",p->info);
+}
+
+TLSE* desloca(TLSE *l, int n) {
+  TLSE *p = l, *ant = NULL;
+
+  while (p->prox) {
+    ant = p;
+    p = p->prox;
   }
 
   // a lista ou não tem elemento ou tem apenas 1 elemento;
-  if (!q) return l;
+  if (!p || !p->prox) return l;
 
+  // Se p existir ele será o último elemento da lista
   if (n%2 == 0) {
-    q->prox = l;
+    p->prox = l;
     l = l->prox;
-    q->prox->prox = NULL;
+    p->prox->prox = NULL;
   } else {
-    q->prox = l;
-    l = q;
+    p->prox = l;
+    l = p;
     ant->prox = NULL;
   }
   return l;
