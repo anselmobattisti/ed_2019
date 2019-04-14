@@ -3,14 +3,6 @@ Q9) Considerando a definição de lista de Q1, escreva uma função em C que, da
 listas, faça a concatenação das mesmas ao final de l1. O protótipo da função é o seguinte:
 TLSE* junta_listas (TLSE* l1, TLSE* l2).
 */
-/*
-Q6) Considerando a definição de lista de Q1, escreva uma função em C que, dada uma
-lista l qualquer, retorne, numa lista de saída, os elementos ímpares e os elementos pares
-da lista l, na ordem em que os elementos aparecem em l. Ao final da execução desta
-função, a lista resultante terá todos os elementos da lista l (primeiro os ímpares, depois os
-pares, na ordem em que eles aparecem em l), e a lista l continuará contendo os seus
-elementos. O protótipo da função é o seguinte: TLSE* i_p ( TLSE *l).
-*/
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -54,7 +54,7 @@ TLC* rto(TLC*l, int elem) {
     if (p->info == elem) {
       aux = p;
       if (ant) {
-        ant->prox = p->prox;
+        ant->prox = p->prox; // remove o primeiro da lista
       } else {
         l = l->prox;
       }
