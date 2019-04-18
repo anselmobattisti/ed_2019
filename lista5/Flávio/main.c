@@ -21,6 +21,7 @@ typedef struct aluno {
 TLSE* insere_inicio_TLSE(TLSE *no,int valor);
 TLSE* insere_fim_TLSE(TLSE *no,int valor);
 TLSE* inicializar_TLSE();
+TAluno* insere_aluno_inicio(TAluno *no,int mat,float cr);
 
 void imprimir_alunos(TAluno *l){
     if(l){
@@ -30,8 +31,11 @@ void imprimir_alunos(TAluno *l){
     }
 }
 TAluno *copia (TAluno *l){
-    TAluno *temp = (TAluno*)malloc(sizeof(TAluno));
-    temp=l;
+    TAluno *temp=inicializar_TLSE();
+    while(l){
+        temp=insere_aluno_inicio(temp,l->mat,l->cr);
+        l=l->prox;
+    }
     return temp;
 }
 TAluno* insere_aluno_inicio(TAluno *no,int mat,float cr){
@@ -201,6 +205,5 @@ int menu(){
 }
 
 void main(){
-    //menu();
-    Q04();
+    menu();
 }
