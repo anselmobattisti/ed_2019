@@ -24,11 +24,116 @@ typedef struct lista{
     float cr;
     struct lista *prox;
 }TLista;
+typedef struct listas{
+    int mat;
+    char nome[81];
+    float cr;
+    struct listas *prox;
+}TL;
 
 TLSE* insere_inicio_TLSE(TLSE *no,int valor);
 TLSE* inicializar_TLSE();
 TAluno* insere_aluno_inicio(TAluno *no,int mat,float cr);
 TLSE* insere_fim_recursivo_TLSE(TLSE *no,int valor);
+TLista* insere_lista_inicio_TLista(TLista *l,int mat,char *nome,float cr);
+
+TLSE* ordena(TLSE *no){
+    if((!no)||(!no->prox))
+        return;
+    TLSE *p;
+    for(p=no;p;p=p->prox){
+        TLSE *q,*menor=p;
+        for(q=p->prox;q;q=q->prox)
+            if(menor->info > q->info)
+                menor=q;
+        if(menor!=p){
+            int temporario=p->info;
+            p->info=menor->info;
+            menor->info=temporario;
+        }
+    }
+    return no;
+}
+void Q11(){
+    TLSE *l=(TLSE*)malloc(sizeof(TLSE));
+    l = inicializar_TLSE();
+    l = insere_inicio_TLSE(l,3);
+    l = insere_inicio_TLSE(l,10);
+    l = insere_inicio_TLSE(l,5);
+    l = insere_inicio_TLSE(l,9);
+    l = insere_inicio_TLSE(l,8);
+    l = insere_inicio_TLSE(l,1);
+    imprimir(ordena(l));
+}
+
+TL* insere_lista_inicio_TL(TLista *l,int mat,char *nome,float cr){
+    TL *temp=(TL*)malloc(sizeof(TL));
+    temp->prox=l;
+    temp->mat=mat;
+    strcpy(temp->nome, nome);
+    temp->cr=cr;
+    return temp;
+}
+int Contrario (TL *l1, TL *l2){
+    TL *novo=(TLSE*)malloc(sizeof(TL));
+    novo = inicializar_TLSE();
+    while(l1){
+        novo=insere_lista_inicio_TL(novo,l1->mat,l1->nome,l1->cr);
+        l1=l1->prox;
+    }
+    while(l2){
+        if((novo->mat!=l2->mat)&&(novo->cr!=l2->cr)&&(strcmp(novo->nome,l2->nome)!=1))
+            return 0;
+        novo=novo->prox;
+        l2=l2->prox;
+    }
+    return 1;
+}
+void imprimir_alunos_TL(TL *l){
+    if(l){
+        printf("Matricula: %d\n",l->mat);
+        printf("Nome: %s\n",l->nome);
+        printf("CR: %.2f\n",l->cr);
+        imprimir_alunos_TL(l->prox);
+    }
+}
+void Q10(){
+    TL *l1=(TLSE*)malloc(sizeof(TL));
+    TL *l2=(TLSE*)malloc(sizeof(TL));
+    l1 = inicializar_TLSE();
+    l2 = inicializar_TLSE();
+    l1 = insere_lista_inicio_TL(l1,1001,"Flavio",7);
+    l1 = insere_lista_inicio_TL(l1,1002,"Miranda",8);
+    l2 = insere_lista_inicio_TL(l2,1002,"Miranda",8);
+    l2 = insere_lista_inicio_TL(l2,1001,"Flavio",7);
+    if(Contrario(l1,l2)==1)
+        printf("Estao Invertidas!\n");
+    else
+        printf("Nao Estao Invertidas!\n");
+}
+
+TLSE* junta_listas (TLSE* l1, TLSE* l2){
+    TLSE *novo=(TLSE*)malloc(sizeof(TLSE));
+    novo=l1;
+    while(l2){
+        novo=insere_fim_recursivo_TLSE(novo,l2->info);
+        l2=l2->prox;
+    }
+    return novo;
+}
+void Q09(){
+    TLSE *l1=(TLSE*)malloc(sizeof(TLSE));
+    TLSE *l2=(TLSE*)malloc(sizeof(TLSE));
+    l1 = inicializar_TLSE();
+    l2 = inicializar_TLSE();
+    l1 = insere_inicio_TLSE(l1,3);
+    l1 = insere_inicio_TLSE(l1,2);
+    l1 = insere_inicio_TLSE(l1,1);
+    l2 = insere_inicio_TLSE(l2,6);
+    l2 = insere_inicio_TLSE(l2,5);
+    l2 = insere_inicio_TLSE(l2,4);
+    imprimir(junta_listas(l1,l2));
+}
 
 int igual(TLista *l1, TLista *l2){
     while(l1&&l2){
@@ -309,6 +414,9 @@ int menu(){
         printf("6 - Exercicio 06\n");
         printf("7 - Exercicio 07\n");
         printf("8 - Exercicio 08\n");
+        printf("9 - Exercicio 09\n");
+        printf("a - Exercicio 10\n");
+        printf("b - Exercicio 11\n");
         printf("Outro - Para sair\n\n---> ");
         scanf (" %c", &op);
         printf("\n");
@@ -361,6 +469,24 @@ int menu(){
             Q08();
             system("pause");
             break;
+        case '9':
+            printf("Considerando a definição de lista de Q1, escreva uma função em C que, dadas duas listas, faça a concatenação das mesmas ao final de l1. O protótipo da função é o seguinte: TLSE* junta_listas (TLSE* l1, TLSE* l2).");
+            printf("\n\n");
+            Q09();
+            system("pause");
+            break;
+        case 'a':
+            printf("Considerando a seguinte declaração de uma lista encadeada:\ntypedef struct lista{\n\tint mat;\n\tchar nome[81];\n\tfloat cr;\n\tstruct lista *prox; \n}TL;\nEscreva uma função em C que, dadas duas listas l1 e l2 encadeadas, verifique se l1 é a inversão de l2. As listas l1 e l2 devem permanecer inalteradas. Esta função retorna 1 se as listas estão invertidas e 0, caso contrário. O protótipo desta função é o seguinte: int Contrario (TL *l1, TL *l2).");
+            printf("\n\n");
+            Q10();
+            system("pause");
+            break;
+        case 'b':
+            printf("Considerando a declaração da Q1, escreva uma função em C que, dada uma lista l qualquer, ordene os elementos de l em uma outra lista de saída. Portanto, a lista de entrada não pode ser alterada. O protótipo da função desta função é o seguinte: TLSE * ordena (TLSE* l).");
+            printf("\n\n");
+            Q11();
+            system("pause");
+            break;
         default:
             printf("Finalizando sistema... Tchau!\n");
             return 0;
@@ -368,7 +494,6 @@ int menu(){
         }
     }
 }
-
 void main(){
     menu();
 }
