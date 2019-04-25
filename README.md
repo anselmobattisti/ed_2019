@@ -6,10 +6,11 @@ https://www.ferendum.com/pt/PID250489PSD62234
 
 ## Datas Importantes
 
-* P1: a definir
-* P2: 27/06/2019
-* Entrega de todas as notas da disciplina: 04/07/2019
-
+```diff
++ * P1: 16/05/2019
+- * P2: 27/06/2019
+- * Entrega de todas as notas da disciplina: 04/07/2019
+```
 
 ## Informações do Repositório
 
