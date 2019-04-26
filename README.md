@@ -1,13 +1,9 @@
-# ENQUETE PARA A PROVA P1!!!
-
-https://www.ferendum.com/pt/PID250489PSD62234
-
 # Estrutura de Dados
 
 ## Datas Importantes
 
 ```diff
-+ P1: 16/05/2019
++ P1: 16/05/2019 (devido aos embargos infringentes)
 - P2: 27/06/2019
 - Entrega de todas as notas da disciplina: 04/07/2019
 ```
