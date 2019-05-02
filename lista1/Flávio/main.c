@@ -101,19 +101,20 @@ int Q01(){
 
 int Q02(){
     while(1){
-        int n,i,div=0;
+        int n,i,cont=0;
         printf("\nDigite um numero inteiro e positivo para n\n---> ");
         scanf(" %d",&n);
         if(n<=0)
             return 0;
-        for(i=1; i<=n;i++){
-            if((n%i)==0)
-                div++;
+        while(n>0){
+            for(i=1;i<=n;i++)
+                if((n%i)==0)
+                    cont++;
+            if(cont==2||n==1)
+                printf("%d ",n);
+            n--;
+            cont=0;
         }
-        if (div == 2 || n==1)
-            printf("O numero %d e primo!\n", n);
-        else
-            printf("O numero %d nao e primo!\n", n);
     }
     return 0;
 }
@@ -142,25 +143,29 @@ int Q03(){
     return 0;
 }
 
+int isPrime(int n) {
+    if(n%2 == 0)
+        return 0;
+    int metade = n/2, i;
+    for(i=3; i<=metade;i+= 2)
+        if(n%i==0)
+            return 0;
+    return 1;
+}
 int Q04(){
     while(1){
-        int n,m,div=0,cont=0,i,j;
+        int n,count;
         printf("\n\nDigite um numero inteiro e positivo para n\n---> ");
         scanf(" %d",&n);
         if(n<=0)
             return 0;
-        printf("\nEstes sao os dois primos posteriores: ");
-        while(cont<2){
-            div=0;
-            n++;
-            for(i=1; i<=n;i++){
-                if((n%i)==0)
-                    div++;
-            }
-            if (div == 2 || n==1) {
-                printf("%d ", n);
-                cont++;
-            }
+        count = n;
+        while (count){
+          if (isPrime(n)) {
+            count--;
+            printf("%d ", n);
+          }
+          n++;
         }
     }
     return 0;
@@ -168,7 +173,7 @@ int Q04(){
 
 int Q05(){
     while(1){
-        int n,bit,i=0,j;
+        int n,i=0,j;
         printf("\n\nDigite um numero inteiro e positivo para n\n---> ");
         scanf(" %d",&n);
         if(n<0)
@@ -179,8 +184,7 @@ int Q05(){
             printf("%d ",n);
         else{
             do{
-                bit=n%2;
-                vet[i]=bit;
+                vet[i]=n%2;
                 i++;
                 n=n/2;
             }while(n>=1);
@@ -192,7 +196,6 @@ int Q05(){
 }
 
 void Q06(){
-    printf("Este eu pedi arrego e copiei do Sidney mesmo! kkkkkkk\n\n");
     int x, y, z;
     int teste;
     x = 5;
