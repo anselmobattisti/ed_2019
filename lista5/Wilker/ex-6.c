@@ -27,15 +27,15 @@ int main(void) {
   l = ins_ini(l, 2);
   l = ins_ini(l, 2);
   
-  printf("\nLista Original:\n");
+  printf("\nLista original antes:\n");
   imprime(l);   
-
+  
   p=i_p(l);
 
-  printf("\nLista original agora par:\n");
+  printf("\nLista original depois:\n");
   imprime(l);
 
-  printf("\nLista impar:\n");
+  printf("\nLista impar e depois par na ordem em que eles aparacem na lista original:\n");
   imprime(p);
 
   return 0;
@@ -43,12 +43,12 @@ int main(void) {
 
 TLSE* i_p (TLSE* l){
     if(!l)return NULL;
-    TLSE*i, *p, *aux=l;
+    TLSE*i = NULL, *p =NULL, *aux=l;
     while(aux){
       if(aux->info %2 == 0){
-        insere_fim(p,aux->info);
+        p = insere_fim(p,aux->info);
       }else{
-        insere_fim(i,aux->info);
+        i = insere_fim(i,aux->info);
       }
       aux=aux->prox;
     }
@@ -66,11 +66,11 @@ void imprime(TLSE*l) {
   if (l) {
     TLSE *p = l;
     while (p->prox) {
-      printf("%d - ", p->info);
+      printf("%d -> ", p->info);
       p = p->prox;
     }
     // imprime o últiom elemento da lista
-    printf("%d - ", p->info);
+    printf("%d -> //", p->info);
   }
   printf("\n\n");
 }
@@ -89,14 +89,8 @@ TLSE* inicializa()  {
 
 TLSE* insere_fim(TLSE* l, int info) {
 	if(!l) return ins_ini(l, info);
-
 	TLSE* p = l;
 	while(p->prox) p = p->prox;
-	
-	TLSE* node = (TLSE*) malloc(sizeof(TLSE));
-	node->info = info;
-	node->prox = NULL;
-
-	p->prox = node;
+	p->prox = ins_ini(p->prox,info);
 	return l;
 }
