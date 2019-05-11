@@ -28,7 +28,7 @@ int main() {
   int total = 0;
 
   scanf("%d",&n);
-  fgets(s,20,stdin);
+  //fgets(s,20,stdin);
   while(n >= 0){
     n--;
     char q0 = pop(mp);
@@ -36,10 +36,12 @@ int main() {
     char q2 = pop(mp);
     char q3 = pop(mp);
 
-    fgets(s,20,stdin);
+    //fgets(s,20,stdin);
 
-    // printf("\nPilha   = %c - %c - %c - %c ",q0,q1,q2,q3);
-   // printf("\nEntrada = %c - %c - %c - %c",s[0],s[2],s[4],s[6]);
+    scanf(" %[^\n]",s);
+
+    //printf("\nPilha   = %c - %c - %c - %c ",q0,q1,q2,q3);
+    //printf("\nEntrada = %c - %c - %c - %c\n",s[0],s[2],s[4],s[6]);
 
     if (s[0] == q0 && s[2] == q1 && s[4] == q2 && s[6] == q3) {
       total++;
