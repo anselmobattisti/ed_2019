@@ -42,6 +42,7 @@ TAluno *copia (TAluno* l) {
   p->mat=l->mat;
   p->cr=l->cr;
   p->prox=copia(l->prox);
+  return p;
 }
 
 
