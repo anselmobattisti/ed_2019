@@ -16,6 +16,7 @@ int vazia(TP *p);
 void libera(TP *p);
 void push(TP *p, int x);
 int pop(TP *p);
+
 void ordena(TP *p);
 void imprime(TP *p);
 void ordena_2(TP *p);
@@ -42,6 +43,7 @@ int main() {
 TP* cria() {
   TP *p = (TP*) malloc(sizeof(TP));
   p->prim = NULL;
+  return p;
 }
 
 int vazia(TP *p) {
