@@ -1,5 +1,4 @@
 /*
-
 Escrito por Sidney Loyola de Sá
 Data: 11/05/2019
 
@@ -13,20 +12,10 @@ Esta função não deve modificar a string original. O protótipo da função é
 (char *str). Isto é, a resposta desta função será uma matriz de caracteres alocada
 dinamicamente.
 
-
-strlen
-strcpy
-strcat
-strcmp
 */
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-
 
 char** s2ss (char *str);
 
