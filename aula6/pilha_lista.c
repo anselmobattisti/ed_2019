@@ -18,26 +18,21 @@ void push(TP *p, int x);
 int pop(TP *p);
 void ordena(TP *p);
 void imprime(TP *p);
+void ordena_2(TP *p);
 
 int main() {
   TP *p = cria();
 
-  if (vazia(p)){
-    printf("\nPilha Vazia.\n");
-  }
+  // if (vazia(p))printf("\nPilha Vazia.\n");
 
   push(p,1);
-  push(p,2);
+  push(p,6);
+  push(p,5);
   push(p,3);
   push(p,4);
-  push(p,5);
-  push(p,6);
+  push(p,2);
 
-  if (!vazia(p)){
-    printf("\nPilha Populada.\n");
-  }
-
-  ordena(p);
+  ordena_2(p);
 
   imprime(p);
 
@@ -86,6 +81,59 @@ void libera(TP *p) {
   }
 
   free(p);
+}
+
+void ordena_2(TP *p) {
+  printf("\nORDENA COM DUAS PILHAS\n");
+
+  TP *a1 = cria();
+  int ja_ordenado = 0;
+  int total = 0;
+
+  // p vazio, tudo no a1 e conta o total
+  while (!vazia(p)) {
+    push(a1, pop(p));
+    total++;
+  }
+
+  int menor;
+
+  while (1) {
+
+    menor = pop(a1);
+
+    // para iniciar a contagem novamente
+    int total_aux = total - 1;
+
+    // ver qual o menor em p
+    while(total_aux > ja_ordenado) {
+      int x = pop(a1);
+      if (menor <= x) {
+        push(p,x);
+      } else {
+        push(p,menor);
+        menor = x;
+      }
+      total_aux--;
+    }
+
+
+    total_aux = total - 1;
+    while(total_aux > ja_ordenado) {
+      push(a1, pop(p));
+      total_aux--;
+    }
+
+    // coloca o menor em p
+    push(p,menor);
+    ja_ordenado++;
+
+    printf("\nmenor %d",menor);
+
+    if (vazia(a1)){
+      return;
+    }
+  }
 }
 
 void ordena(TP *p) {
