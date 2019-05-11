@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 
 typedef struct no {
   char info;
@@ -26,20 +28,20 @@ int main() {
   int total = 0;
 
   scanf("%d",&n);
-
-  while(n > 0){
-    scanf("%s",s);
-
-    if (vazia(mp)) {
-      push_face(mp);
-    }
-
+  fgets(s,20,stdin);
+  while(n >= 0){
+    n--;
     char q0 = pop(mp);
     char q1 = pop(mp);
     char q2 = pop(mp);
     char q3 = pop(mp);
 
-    if (s[0] == q0 && s[1] == q1 && s[2] == q2 && s[3] == q3) {
+    fgets(s,20,stdin);
+
+    // printf("\nPilha   = %c - %c - %c - %c ",q0,q1,q2,q3);
+   // printf("\nEntrada = %c - %c - %c - %c",s[0],s[2],s[4],s[6]);
+
+    if (s[0] == q0 && s[2] == q1 && s[4] == q2 && s[6] == q3) {
       total++;
     } else {
       push(mp, q3);
@@ -47,11 +49,15 @@ int main() {
       push(mp, q1);
       push(mp, q0);
       push(mp, s[0]);
-      push(mp, s[1]);
       push(mp, s[2]);
-      push(mp, s[3]);
+      push(mp, s[4]);
+      push(mp, s[6]);
     }
-    n--;
+
+    if (vazia(mp)) {
+      push_face(mp);
+    }
+
   }
 
   printf("%d\n",total);
@@ -112,9 +118,19 @@ char pop(TPILHA *p) {
 }
 
 void imprime(TPILHA *p) {
+
+    TPILHA *aux = cria();
+
     printf("\n");
     while(!vazia(p)) {
-      printf("%c .",pop(p));
+      char c = pop(p);
+      printf("%c .",c);
+      push(aux,c);
     }
+
+    while(!vazia(aux)) {
+      push(p,pop(aux));
+    }
+
     printf("\n");
 }
