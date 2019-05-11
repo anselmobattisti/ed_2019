@@ -136,6 +136,8 @@ TFila* p2f (TPilha *p){
         push(p2,pop(p1));
     while(!vazia(p2))
         f=insere(f,pop(p2));
+    libera(p1);
+    libera(p2);
     return f;
 }
 void Qf(){
@@ -159,6 +161,7 @@ void retira_pares (TPilha *p){
         if((i%2)==1)
             push(p,i);
     }
+    libera(p2);
 }
 void Qe(){
     TPilha *p=inicializa();
@@ -226,6 +229,7 @@ TFila* inv_fila (TFila *f){
         push(p,retira(f));
     while(!vazia(p))
         insere(f2,pop(p));
+    libera(p);
     return f2;
 }
 void Qb(){
@@ -244,6 +248,7 @@ TPilha* f2p (TFila *f){
         push(p1,retira(f));
     while(!vazia(p1))
         push(p2,pop(p1));
+    libera(p1);
     return p2;
 }
 void Qa(){

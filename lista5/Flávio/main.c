@@ -64,8 +64,15 @@ void Q11(){
     l = insere_inicio_TLSE(l,8);
     l = insere_inicio_TLSE(l,1);
     imprimir(ordena(l));
+    libera_recursivo_TLSE(l);
 }
 
+void libera_recursivo_TL(TL *no){
+    if(no){
+        libera_recursivo_TL(no->prox);
+        free(no);
+    }
+}
 TL* insere_lista_inicio_TL(TLista *l,int mat,char *nome,float cr){
     TL *temp=(TL*)malloc(sizeof(TL));
     temp->prox=l;
@@ -75,7 +82,7 @@ TL* insere_lista_inicio_TL(TLista *l,int mat,char *nome,float cr){
     return temp;
 }
 int Contrario (TL *l1, TL *l2){
-    TL *novo=(TLSE*)malloc(sizeof(TL));
+    TL *novo=(TL*)malloc(sizeof(TL));
     novo = inicializar_TLSE();
     while(l1){
         novo=insere_lista_inicio_TL(novo,l1->mat,l1->nome,l1->cr);
@@ -87,6 +94,7 @@ int Contrario (TL *l1, TL *l2){
         novo=novo->prox;
         l2=l2->prox;
     }
+    libera_recursivo_TL(novo);
     return 1;
 }
 void imprimir_alunos_TL(TL *l){
@@ -98,8 +106,8 @@ void imprimir_alunos_TL(TL *l){
     }
 }
 void Q10(){
-    TL *l1=(TLSE*)malloc(sizeof(TL));
-    TL *l2=(TLSE*)malloc(sizeof(TL));
+    TL *l1=(TL*)malloc(sizeof(TL));
+    TL *l2=(TL*)malloc(sizeof(TL));
     l1 = inicializar_TLSE();
     l2 = inicializar_TLSE();
     l1 = insere_lista_inicio_TL(l1,1001,"Flavio",7);
@@ -110,11 +118,12 @@ void Q10(){
         printf("Estao Invertidas!\n");
     else
         printf("Nao Estao Invertidas!\n");
+    libera_recursivo_TL(l1);
+    libera_recursivo_TL(l2);
 }
 
 TLSE* junta_listas (TLSE* l1, TLSE* l2){
-    TLSE *novo=(TLSE*)malloc(sizeof(TLSE));
-    novo=l1;
+    TLSE *novo=l1;
     while(l2){
         novo=insere_fim_recursivo_TLSE(novo,l2->info);
         l2=l2->prox;
@@ -133,8 +142,16 @@ void Q09(){
     l2 = insere_inicio_TLSE(l2,5);
     l2 = insere_inicio_TLSE(l2,4);
     imprimir(junta_listas(l1,l2));
+    libera_recursivo_TLSE(l1);
+    libera_recursivo_TLSE(l2);
 }
 
+void libera_recursivo_TLista(TLista *no){
+    if(no){
+        libera_recursivo_TLista(no->prox);
+        free(no);
+    }
+}
 int igual(TLista *l1, TLista *l2){
     while(l1&&l2){
         if((l1->mat!=l2->mat)||(l1->cr!=l2->cr)||(strcmp(l1->nome,l2->nome)!=0))
@@ -155,8 +172,8 @@ TLista* insere_lista_inicio_TLista(TLista *l,int mat,char *nome,float cr){
     return temp;
 }
 void Q08(){
-    TLSE *l1=(TLSE*)malloc(sizeof(TLSE));
-    TLSE *l2=(TLSE*)malloc(sizeof(TLSE));
+    TLista *l1=(TLista*)malloc(sizeof(TLista));
+    TLista *l2=(TLista*)malloc(sizeof(TLista));
     l1 = inicializar_TLSE();
     l2 = inicializar_TLSE();
     l1 = insere_lista_inicio_TLista(l1,1001,"Flavio",7);
@@ -167,6 +184,8 @@ void Q08(){
         printf("Iguais.\n");
     else
         printf("Diferentes.\n");
+    libera_recursivo_TLista(l1);
+    libera_recursivo_TLista(l2);
 }
 
 void* i_p2 ( TLSE *l){
@@ -194,6 +213,8 @@ void* i_p2 ( TLSE *l){
             pares=pares->prox;
         }
     }
+    libera_recursivo_TLSE(impares);
+    libera_recursivo_TLSE(pares);
     imprimir(novo);
 }
 void Q07(){
@@ -206,19 +227,25 @@ void Q07(){
     l = insere_inicio_TLSE(l,11);
     l = insere_inicio_TLSE(l,10);
     l = i_p2(l);
+    libera_recursivo_TLSE(l);
 }
 
+void libera_recursivo_TLSE(TLSE *no){
+    if(no){
+        libera_recursivo_TLSE(no->prox);
+        free(no);
+    }
+}
 TLSE* i_p ( TLSE *l){
     TLSE *pares,*impares,*novo;
     pares=inicializar_TLSE();
     impares=inicializar_TLSE();
     novo=inicializar_TLSE();
     while(l){
-        if(l->info%2==0){
+        if(l->info%2==0)
             pares=insere_fim_recursivo_TLSE(pares,l->info);
-        } else {
+        else
             impares=insere_fim_recursivo_TLSE(impares,l->info);
-        }
         l=l->prox;
     }
     int i=0;
@@ -233,6 +260,8 @@ TLSE* i_p ( TLSE *l){
             pares=pares->prox;
         }
     }
+    libera_recursivo_TLSE(impares);
+    libera_recursivo_TLSE(pares);
     return novo;
 }
 void Q06(){
@@ -246,6 +275,7 @@ void Q06(){
     l = insere_inicio_TLSE(l,1);
     l = i_p(l);
     imprimir(l);
+    libera_recursivo_TLSE(l);
 }
 
 TLSE* insere_fim_recursivo_TLSE(TLSE *no,int valor){
@@ -257,7 +287,7 @@ TLSE* insere_fim_recursivo_TLSE(TLSE *no,int valor){
 TLSE* rto (TLSE* l, int elem){
     TLSE *novo=(TLSE*)malloc(sizeof(TLSE));
     novo=inicializar_TLSE();
-    while(l->prox){
+    while(l){
         if(l->info!=elem)
             novo=insere_fim_recursivo_TLSE(novo,l->info);
         l=l->prox;
@@ -275,6 +305,7 @@ void Q05(){
     l = insere_inicio_TLSE(l,1);
     l = rto(l,2);
     imprimir(l);
+    libera_recursivo_TLSE(l);
 }
 
 void imprimir_alunos(TAluno *l){
@@ -305,6 +336,7 @@ void Q04(){
     l=insere_aluno_inicio(l,1001,7);
     l=insere_aluno_inicio(l,1002,8);
     imprimir_alunos(copia(l));
+    libera_recursivo_TLSE(l);
 }
 
 TLSE* desloca(TLSE* l, int n){
@@ -333,6 +365,7 @@ TLSE* desloca(TLSE* l, int n){
         temp->prox=NULL;
         temp=no;
     }
+    libera_recursivo_TLSE(fim);
     return temp;
 }
 void Q03(){
@@ -344,6 +377,7 @@ void Q03(){
     l = insere_inicio_TLSE(l,1);
     l = desloca(l,1);
     imprimir(l);
+    libera_recursivo_TLSE(l);
 }
 
 TLSE* inverte2(TLSE *l){
@@ -369,6 +403,8 @@ void Q02(){
     TLSE *l2=(TLSE*)malloc(sizeof(TLSE));
     l2 = inverte2(l);
     imprimir(l2);
+    libera_recursivo_TLSE(l);
+    libera_recursivo_TLSE(l2);
 }
 
 void inverte(TLSE* l){
@@ -398,6 +434,7 @@ void Q01(){
     l = insere_inicio_TLSE(l,2);
     l = insere_inicio_TLSE(l,1);
     inverte(l);
+    libera_recursivo_TLSE(l);
 }
 
 int menu(){

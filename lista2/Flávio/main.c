@@ -77,7 +77,7 @@ int Q01(){
     return 0;
 }
 
-int Q02(){
+int Q02(){//pedi arrego e copiei esta
     printf("\nEste programa trabalha com integrais e dedivadas, como nao fui eu quem fez, não posso ajudar... kkk\n");
     int g,i;
     while(scanf(" %d",&g) && g>0){
@@ -102,7 +102,7 @@ int Q02(){
 }
 
 int Q03(){
-    char a[10],b[10],i,j,tama,tamb,conta=0,contb;
+    char a[10],b[10],i,j;
     printf("\nDigite o valor de a\n---> ");
     scanf("%s",&a);
     printf("\nDigite o valor de b\n---> ");
@@ -113,18 +113,15 @@ int Q03(){
     for(i=0;b[i]!='\0';i++)
         if(b[i]=='0')
             return 0;
-    tama=strlen(a);
-    tamb=strlen(b);
-    if(tama!=tamb)
+    if(strlen(a)!=strlen(b))
         return 0;
     for(i=0;a[i]!='\0';i++)
-        for(j=0;b[j]!='\0';j++){
+        for(j=0;b[j]!='\0';j++)
             if(a[i]==b[j]){
                 a[i]='x';
                 b[j]='x';
                 break;
             }
-        }
     if(strcmp(a,b)==0)
         printf("\nOs valores sao permutacoes\n");
     else

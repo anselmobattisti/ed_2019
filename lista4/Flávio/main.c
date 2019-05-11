@@ -96,28 +96,31 @@ void Q02(){
     matProduto=mult(m1,n1,mat1,m2,n2,mat2);
     imprimeMatriz(matProduto,m1,n2);
 }
-
-char** s2ss(char *str){
-    int i,tamanho=strlen(str),barras=0,palavras,a=0,b=0;
-    for(i=0;i<tamanho;i++){
+int contPalavras(char *str){
+    int i,cont=0, tam=strlen(str)-1;
+    for(i=0;i<tam;i++)
         if(str[i]=='/')
-            barras++;
-    }
-    palavras=barras-1;
+            cont++;
+    if(str[0])
+        cont--;
+    if(str[tam])
+        cont--;
+    return ++cont;
+}
+char** s2ss(char *str){
+    int palavras=contPalavras(str),i=0,j=0,k=0,p;
     char **resposta=(char**)malloc(sizeof(char*)*palavras);
-
-    int j = 0,k = 0; i=0;
-    while (str[i] != '\0') {
+    while(str[i]!='\0'){
         // achou uma barra
-        if (str[i] == '/') {
+        if(str[i]=='/'){
             // acha a próxima barra
-            for (j = i+1; str[j] != '/' && str[j] != '\0'; j++);
-                resposta[k] = (char*) malloc(sizeof(char) * (j-i));
-                int tmp = 0;
-                for (int p = i+1; p < j; p++) {
-                    resposta[k][tmp] = str[p];
-                    tmp++;
-                }
+            for(j=i+1;str[j]!= '/' && str[j]!='\0';j++)
+                resposta[k]=(char*)malloc(sizeof(char)*(j-i));
+            int temp=0;
+            for(p=i+1;p<j;p++){
+                resposta[k][temp]=str[p];
+                temp++;
+            }
             k++;
         }
         i++;
@@ -128,8 +131,8 @@ void Q03(){
     char *stringOriginal="/Fla/Flu/Bota/",**stringResultante;
     printf("\nString Original: %s\n",stringOriginal);
     stringResultante=s2ss(stringOriginal);
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; stringResultante[i][j] != '\0'; j++)
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; stringResultante[i][j] != '\0'; j++)
             printf("%c",stringResultante[i][j]);
         printf("\n");
     }
@@ -137,8 +140,8 @@ void Q03(){
 
 int ** construir_hadamard( int ** matriz, int ordem){
     int ii, xx, yy;
-    matriz[0][0]= 1;
-    for(ii=2; ii<=ordem; ii*=2) {
+    matriz[0][0]=1;
+    for(ii=2; ii<=ordem; ii*=2){
         for(xx=0; xx<(ii/2); ++xx)
             for(yy=(ii/2); yy<ii; ++yy)
                 matriz[xx][yy]=matriz[xx][yy-(ii/2)];
@@ -146,7 +149,7 @@ int ** construir_hadamard( int ** matriz, int ordem){
             for(xx=(ii/2); xx<ii; ++xx)
                 matriz[xx][yy]=matriz[xx-(ii/2)][yy];
         for(xx=(ii/2); xx<ii; ++xx)
-            for(yy=(ii/2); yy<ii; ++yy) {
+            for(yy=(ii/2); yy<ii; ++yy){
                 matriz[xx][yy]=matriz[xx-(ii/2)][yy-(ii/2)];
                 if(matriz[xx][yy]==1)
                     matriz[xx][yy]=0;
