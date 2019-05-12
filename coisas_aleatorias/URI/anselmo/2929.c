@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 typedef struct no {
-  char info;
+  long info;
   struct no *prox;
 }TNO;
 
@@ -15,56 +14,55 @@ typedef struct pilha {
 TPILHA* cria();
 int vazia(TPILHA *p);
 void libera(TPILHA *p);
-void push(TPILHA *p, char x);
-char pop(TPILHA *p);
+void push(TPILHA *p, long x);
+long pop(TPILHA *p);
 void imprime(TPILHA *p);
 int min_p(TPILHA *p);
 
 int main() {
   int n = 0;
   char s[100];
+  long menor = -1;
   TPILHA *mp = cria();
-  int min = 0;
+
   scanf("%d",&n);
-  while(n--){
-    scanf("%[^n]",s);
-    printf("%s\n\n",s);
-    if (strcmp(s,"PUSH 5")){
-      int aux;
-      scanf("%d",&aux);
-      push(mp,aux);
-      printf("%d------------",aux);
-    }
 
-    if (strcmp(s,"POP")){
-      if(vazia(mp)) {
-        printf("EMPTYa\n");
+  while (n--) {
+    scanf(" %[^\n]",s);
+
+    if (s[0] == 'M') {
+      if(!vazia(mp)) {
+        printf("%ld\n",menor);
       } else {
+        printf("EMPTY\n");
+      }
+    } else if(s[1] == 'O') {
+      if(!vazia(mp)){
         int k = pop(mp);
-      }
-      continue;
-    }
-
-    if (strcmp(s,"MIN")){
-      if(vazia(mp)) {
-        printf("EMPTYn\n");
+        if (k == menor)
+          menor = min_p(mp);
       } else {
-        printf("%d", min_p(mp));
+        printf("EMPTY\n");
       }
-      continue;
+    } else {
+      int v = atoi(&s[5]);
+      if (v < menor || menor == -1)
+        menor = v;
+      push(mp,v);
     }
   }
+
   return 0;
 }
 
-int min_p(TPILHA *p) {
-  TPILHA *aux;
 
-  int min = 0;
+int min_p(TPILHA *p) {
+  TPILHA *aux = cria();
+  int min = -1;
 
   while (!vazia(p)){
     int k = pop(p);
-    if (k < min) {
+    if (k < min || min == -1) {
       min = k;
     }
     push(aux,k);
@@ -101,14 +99,14 @@ void libera(TPILHA *p) {
   free(p);
 }
 
-void push(TPILHA *p, char x) {
+void push(TPILHA *p, long x) {
   TNO *aux = (TNO*) malloc(sizeof(TNO));
   aux->info = x;
   aux->prox = p->prim;
   p->prim = aux;
 }
 
-char pop(TPILHA *p) {
+long pop(TPILHA *p) {
   if (vazia(p)) {
     exit(1);
   }
