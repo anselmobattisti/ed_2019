@@ -1,73 +1,94 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+
+
 
 typedef struct lista{
-int info;
-struct lista *prox;
+	int info;
+	struct lista *prox;
 }TLSE;
 
- void inverte (TLSE* l);
- void imprime(TLSE* l);
- void insere(TLSE* l, int v);
- void insere_inicio(TLSE* l, int v);
+void inverte(TLSE* L);
+void insere(TLSE* L, int v);
+void imprime(TLSE* L);
+void insereInicio(TLSE* L, int v);
 
+int main(void){
 
-int main(void) {
-  TLSE* lista = (TLSE*)malloc(sizeof(TLSE));
-  lista->info = 1;
-  insere_inicio(lista, 3);
-  insere_inicio(lista, 4);
+	
+	TLSE* l = (TLSE*)malloc(sizeof(TLSE));
+	l->info = 3;
+	l->prox = NULL;
+	insere(l,4);
+	insere(l,5);
 
-  printf("Lista Inicial \n");
-  imprime(lista);
+	printf("Lista Original \n");
+	imprime(l);
+	
+	printf("Lista Insere Inicio \n");
+	insereInicio(l,7);
+	imprime(l);
 
-  inverte(lista);
+	printf("Lista Invertida \n");
+	inverte(l);
+	imprime(l);
 
-  printf("Lista Invertida \n");
-  imprime(lista);
-
-  return 0;
+	TLSE* p = l;
+	while(p!=NULL){
+		TLSE* t = p->prox;
+		free(p);
+		p = t;
+	}
+	free(l);
+	
+	return 0;
 }
 
-void inverte (TLSE* l){
-  TLSE* inv = (TLSE*)malloc(sizeof(TLSE));
- 
-  for(TLSE* p=l;p!=NULL;p=p->prox){
-            TLSE* novo = (TLSE*)malloc(sizeof(TLSE));
-            novo->info = inv->info;
-            novo->prox = inv->prox;
-
-            inv->info = p->info;
-            inv->prox = p->prox;       
-   }  
+void inverte(TLSE* L){
+	TLSE* inv = (TLSE*) malloc(sizeof(TLSE));
+	inv->info = L->info;
+	inv->prox = NULL;
+		
+	for(TLSE* p = L->prox;p!= NULL;p = p->prox){
+		insereInicio(inv,p->info);
+		
+	}
+	
+	L->info = inv->info;
+	L->prox = inv->prox;		
 }
 
+void insere(TLSE* L, int v){
+	TLSE* ant = NULL;
+	
 
-void insere_inicio(TLSE* l, int v){
+	TLSE* novo = (TLSE*) malloc(sizeof(TLSE));
+	novo->info = v;
+		
 
-
-  TLSE* novo = (TLSE*)malloc(sizeof(TLSE));
-  novo->info = l->info;
-  novo->prox = l->prox;
-
-  l->info = v;
-  l->prox = novo;
-  
-   
+	for(TLSE* p = L;p!= NULL;p = p->prox){
+		ant = p;
+	}
+	ant->prox = novo;	
+	
 }
 
-void insere(TLSE* l, int v){
-  TLSE* ult = NULL;
-  TLSE* novo = (TLSE*)malloc(sizeof(TLSE));
-  novo->info = v;
-  for(TLSE* p=l;p!=NULL;p=p->prox){
-        ult = p;
-   }
-   ult->prox = novo;
+void insereInicio(TLSE* L, int v){
+	TLSE* novo = (TLSE*) malloc(sizeof(TLSE));	
+	novo->info = L->info;
+	novo->prox = L->prox;
+	
+	L->info = v;	
+	L->prox = novo;
+
+	
 }
 
- void imprime(TLSE* l){
-   for(TLSE* p=l;p!=NULL;p=p->prox){
-        printf("info = %d \n",p->info);
-   }
- }
+void imprime(TLSE* L){
+	for(TLSE* p = L;p!= NULL;p = p->prox){
+		printf("info = %d \n", p->info);
+	}
+}
+        
