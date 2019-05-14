@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 float autonomia(float g, float a);
+float custo(float g, float pg, float a, float pa);
 float custo_medio(float g, float pg, float a, float pa);
 
 int main(void) {
@@ -18,17 +19,21 @@ int main(void) {
   printf("\nCusto médio: %.2f R$/km",custo_medio(g, pg, a, pa));
 
   printf("\n-----------------\n");
-  printf("\nViagem longa\n");
+  printf("Viagem longa\n");
   for(int i = 0; i <= 50; i+=5) {
     int temp_a = 50 - i;
-    printf("\n Gasolina: %d Alcool: %d Autonomia: %.2f",i, temp_a, autonomia(i, temp_a));
+    printf("\n Gasolina: %d Alcool: %d Autonomia: %.2f Custo: %.2f Custo Médio: %.2f",i, temp_a, autonomia(i, temp_a), custo(i, pg, temp_a, pa), custo_medio(i, pg, temp_a, pa));
   }
   printf("\n-----------------\n");
   return 0;
 }
 
+float custo(float g, float pg, float a, float pa) {
+  return (g*pg+a*pa);
+}
+
 float custo_medio(float g, float pg, float a, float pa) {
-  return (g*pg+a*pa)/autonomia(g,a);
+  return custo(g, pg, a, pa)/autonomia(g,a);
 }
 
 float autonomia(float g, float a) {
