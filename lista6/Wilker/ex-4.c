@@ -1,0 +1,199 @@
+#include <stdio.h>
+#include <stdlib.h>
+// ==========================================
+typedef struct no {
+  int info;
+  struct no *prox;
+}TNO;
+
+typedef struct fila
+{
+  TNO *ini, *fim;
+}TF;
+
+
+TF* inicializa_fila() {
+  TF *f = (TF*) malloc(sizeof(TF));
+  f->ini = NULL;
+  f->fim = NULL;
+  return f;
+}
+
+int fila_vazia(TF *f) {
+  return f->ini == NULL;
+}
+
+void libera_fila(TF *f) {
+  TNO *q = f->ini, *t;
+
+  while (q) {
+    t = q;
+    q = q->prox;
+    free(t);
+  }
+  free(f);
+}
+
+TF* insere(TF *f, int x) {
+  TNO *n = (TNO*) malloc(sizeof(TNO));
+  n->info = x;
+  n->prox = NULL;
+  if(fila_vazia(f)) {
+    f->ini = n;
+    f->fim = n;
+  } else {
+    f->fim->prox = n;
+    f->fim = n;
+  }
+}
+
+int retira(TF *f) {
+  if (fila_vazia(f)) {
+    exit(1);
+  }
+
+  int resp = f->ini->info;
+
+  TNO *q = f->ini;
+
+  f->ini = f->ini->prox;
+
+  // SE FOR O FIM DA FILA
+  if (!f->ini) f->fim =  NULL;
+  free(q);
+
+  return resp;
+}
+
+void imprime_fila(TF *f) {
+  printf("- Fila -\n");
+  while (!fila_vazia(f)) {
+    printf("%d -> ",retira(f));
+  }
+  printf("//\n- - - \n");
+}
+
+
+
+// ==========================================
+
+// ******************************************
+typedef struct pilha
+{
+  TNO *prim;
+}TP;
+
+
+TP* inicializa_pilha() {
+  TP *p = (TP*) malloc(sizeof(TP));
+  p->prim = NULL;
+  return p;
+}
+
+int pilha_vazia(TP *p) {
+  return p->prim == NULL;
+}
+
+void push(TP *p, int x) {
+
+  TNO *aux = (TNO*) malloc(sizeof(TNO));
+  aux->info = x;
+  aux->prox = p->prim;
+  p->prim = aux;
+
+}
+
+int pop(TP *p) {
+  if (pilha_vazia(p)) {
+    exit(1);
+  }
+
+  TNO *q = p->prim;
+  int ret = q->info;
+
+  p->prim = p->prim->prox;
+  free(q);
+
+  return ret;
+}
+
+void libera_pilha(TP *p) {
+  TNO *q = p->prim, *t;
+
+  while(q) {
+    t = q;
+    q = q->prox;
+    free(t);
+  }
+
+  free(p);
+}
+
+void imprime_pilha(TP *p) {
+  printf("\n - Pilha -");
+  while (!pilha_vazia(p)) {
+    printf("\n%d",pop(p));
+  }
+  printf("\n- - - \n");
+}
+
+
+// ******************************************
+
+
+TF *junta_fila(TF *f1, TF *f2){
+    if(!f1 || !f2)return NULL;
+    TF *f3 = inicializa_fila();
+    TF *f4 = inicializa_fila();
+
+    while (!fila_vazia(f1)){
+        int x = retira(f1);
+        f3=insere(f3,x);
+        f4=insere(f4,x);
+    }
+    while(!fila_vazia(f4)){
+        insere(f1,retira(f4));
+    }
+    while (!fila_vazia(f2)){
+        int x = retira(f2);
+        f3=insere(f3,x);
+        f4=insere(f4,x);
+    }
+    while(!fila_vazia(f4)){
+        insere(f2,retira(f4));
+    }
+    libera_fila(f4);
+    return f3;    
+}
+
+
+int main(int argc, char const *argv[]) {
+    TF *f = inicializa_fila();
+    insere(f, 2);
+    insere(f, 3);
+    insere(f, 5);
+    insere(f, 7);
+    insere(f, 11);
+    insere(f, 13);
+
+    TF *f2 = inicializa_fila();
+    insere(f2,102);
+    insere(f2,103);
+    insere(f2,105);
+    insere(f2,107);
+    insere(f2,108);
+    insere(f2,109);
+
+	  TF *f3 = inicializa_fila();
+    f3 = junta_fila(f,f2);
+
+    imprime_fila(f);		
+    imprime_fila(f2); 
+    imprime_fila(f3);
+
+    libera_fila(f);
+    libera_fila(f2);
+    libera_fila(f3);
+
+    return 0;
+}
