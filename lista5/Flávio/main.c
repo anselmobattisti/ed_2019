@@ -408,9 +408,23 @@ void Q02(){
 }
 
 void inverte(TLSE* l){
-    if(l->prox)
-        inverte(l->prox);
-    printf("%d ",l->info);
+    if(!l) return;
+    TLSE *p=l;
+    int i,tam=0;
+    while(p){
+        p=p->prox;
+        tam++;
+    }
+    p=l;
+    int *vet=(int*)malloc(sizeof(int)*tam);
+    for(i=0;i<tam;i++){
+        vet[i]=p->info;
+        p=p->prox;
+    }
+    for(i=tam-1;i>=0;i--){
+        l->info=vet[i];
+        l=l->prox;
+    }
 }
 TLSE* insere_inicio_TLSE(TLSE *no,int valor){
     TLSE *temp=(TLSE*)malloc(sizeof(TLSE));
@@ -430,10 +444,11 @@ TLSE* inicializar_TLSE(){
 void Q01(){
     TLSE *l=(TLSE*)malloc(sizeof(TLSE));
     l = inicializar_TLSE();
-    l = insere_inicio_TLSE(l,3);
-    l = insere_inicio_TLSE(l,2);
-    l = insere_inicio_TLSE(l,1);
+    l=insere_inicio_TLSE(l,3);
+    l=insere_inicio_TLSE(l,2);
+    l=insere_inicio_TLSE(l,1);
     inverte(l);
+    imprimir(l);
     libera_recursivo_TLSE(l);
 }
 
