@@ -71,6 +71,7 @@ TFila* insere (TFila *f, int elem){
         f->fim->proxi=novo;
         f->fim=novo;
     }
+    return f;
 }
 int retira (TFila *f){
     if(vaziaF())
@@ -84,12 +85,15 @@ int retira (TFila *f){
     return valor;
 }
 void liberaF (TFila *f){
+    while(!vaziaF(f))
+        retira(f);
+    /*
     TNOF *temp;
     while(f){
         temp=f->ini;
         f->ini=f->ini->proxi;
         free(temp);
-    }
+    }*/
     free(f);
 }
 int vaziaF (TFila *f){
@@ -110,6 +114,7 @@ void separa_filas(TFila * f, TFila *par, TFila * impar){
     }
     while(!vaziaF(fila))
         f=insere(f,retira(fila));
+    liberaF(fila);
 }
 void Qg(){
     TFila *f=inicializaF(),*par=inicializaF(),*impar=inicializaF();
@@ -130,13 +135,16 @@ void Qg(){
 }
 
 TFila* p2f (TPilha *p){
-    TPilha *p1=p,*p2=inicializa();
+    TPilha *p2=inicializa();
     TFila *f=inicializaF();
-    while(!vazia(p1))
-        push(p2,pop(p1));
+    int x;
+    while(!vazia(p)){
+        x=pop(p);
+        push(p2,x);
+        f=insere(f,x);
+    }
     while(!vazia(p2))
-        f=insere(f,pop(p2));
-    libera(p1);
+        push(p,pop(p2));
     libera(p2);
     return f;
 }
@@ -175,11 +183,24 @@ void Qe(){
 }
 
 TFila* Junta_Filas (TFila *f1, TFila *f2){
-    TFila *fa=f1,*fb=f2,*fc=inicializaF();
+    TFila *fa=inicializa(),*fb=inicializa(),*fc=inicializaF();
+    int x;
+    while(!vaziaF(f1)){
+        x=retira(f1);
+        fa=insere(fa,x);
+        fc=insere(fc,x);
+    }
+    while(!vaziaF(f2)){
+        x=retira(f2);
+        fb=insere(fb,x);
+        fc=insere(fc,x);
+    }
     while(!vaziaF(fa))
-        fc=insere(fc,retira(fa));
+        f1=insere(f1,retira(fa));
     while(!vaziaF(fb))
-        fc=insere(fc,retira(fb));
+        f2=insere(f2,retira(fb));
+    liberaF(fa);
+    liberaF(fb);
     return fc;
 }
 void Qd(){
@@ -205,6 +226,7 @@ TFila* sep_fila (TFila *f){
     }
     while(!vaziaF(fImpar))
         f=insere(f,retira(fImpar));
+    liberaF(fImpar);
     return fPar;
 }
 void Qc(){
