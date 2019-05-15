@@ -45,6 +45,7 @@ int main(void) {
   l = desloca(l,1);
   printf("\nLista Descolada IMPAR:\n");
   imprime(l);
+
 }
 
 void ultimo_anterior(TLSE*l) {
@@ -59,6 +60,35 @@ void ultimo_anterior(TLSE*l) {
   printf("\n - Último: %d\n",p->info);
 }
 
+TLSE* desloca(TLSE *l, int n) {
+
+  if (!l || l->prox == NULL)
+    return NULL;
+
+  if (n%2 == 0) {
+    TLSE *p =l, *q = l;
+    l = l->prox;
+
+    while(q->prox) {
+      q = q->prox;
+    }
+    q->prox = p;
+    p->prox = NULL;
+  } else {
+    TLSE* p = l;
+    while(p->prox) {
+      p = p->prox;
+    }
+    TLSE *q = l;
+    l = l->prox;
+    p->prox = q;
+    q->prox = NULL;
+  }
+
+  return l;
+}
+
+/*
 TLSE* desloca(TLSE *l, int n) {
   TLSE *p = l, *ant = NULL;
 
@@ -82,7 +112,7 @@ TLSE* desloca(TLSE *l, int n) {
   }
   return l;
 }
-
+*/
 TLSE* troca_cabeca(TLSE*l, int n) {
 
   TLSE* p = l, *q;

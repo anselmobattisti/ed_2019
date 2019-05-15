@@ -28,13 +28,35 @@ int main(void) {
   l = ins_ini(l, 2);
   l = ins_ini(l, 2);
 
-  printf("\nLista Original:\n");
-  imprime(l);
-
   printf("\nLista Sem o 2:\n");
   imprime(rto(l,2));
 }
 
+TLSE* rto (TLSE* l, int elem) {
+  if (!l) return NULL;
+  TLSE *p = l, *q = l, *ant = l;
+  while (l && l->info == elem) {
+    q = l;
+    l = l->prox;
+    free(q);
+  }
+  p = l;
+  ant = l;
+  while(p) {
+    if (p && p->info == elem) {
+      q = p;
+      p = p->prox;
+      ant->prox = p;
+      free(q);
+    } else {
+      ant = p;
+      p = p->prox;
+    }
+  }
+  return l;
+}
+
+/*
 TLSE* rto (TLSE* l, int elem) {
   if (!l) return l;
 
@@ -62,7 +84,7 @@ TLSE* rto (TLSE* l, int elem) {
 
   return l;
 }
-
+*/
 void imprime(TLSE*l) {
   printf("\nLista\n");
   if (l) {

@@ -17,52 +17,53 @@ typedef struct lista {
 
 TLSE* inicializa();
 TLSE* ins_ini(TLSE *l, int x);
+TLSE* inverte(TLSE*l);
 void imprime(TLSE*l);
-void inverte(TLSE*l);
 
 int main(void) {
   TLSE *l = inicializa();
-  l = ins_ini(l, 1);
-  l = ins_ini(l, 2);
-  l = ins_ini(l, 3);
+  l = ins_ini(l, 5);
   l = ins_ini(l, 4);
-  //l = ins_ini(l, 5);
-  inverte(l);
+  l = ins_ini(l, 3);
+  l = ins_ini(l, 2);
+  l = ins_ini(l, 1);
+  l = inverte(l);
   imprime(l);
 }
 
-void inverte(TLSE*l) {
-  if (!l)
-    return;
+TLSE* inverte(TLSE*l) {
+  if ((!l) || (l->prox == NULL))
+    return NULL;
 
-  TLSE *atual, *ultimo, *p, *q;
-  int total = 0;
+  int n = 0;
+  TLSE *ultimo = (TLSE*) malloc(sizeof(TLSE));
+  TLSE *ant, *p;
 
-  atual = l;
   p = l;
 
-  while (atual->prox != NULL) {
-    total++;
-    atual = atual->prox;
+  while (p->prox) {
+    n++;
+    ant = p;
+    p = p->prox;
   }
 
-  ultimo = atual;
-  atual = l;
+  ultimo = p;
+  ultimo->prox = ant;
 
-  for (int i = 1; i <= (int)total/2; i++) {
-    p = atual;
-    q = p;
-    while (p != ultimo) {
-      q = p;
+  while (n > 1) {
+    n--;
+    p = l;
+    while (p->prox != ant) {
       p = p->prox;
     }
-
-    int tmp = atual->info;
-    atual->info = ultimo->info;
-    ultimo->info = tmp;
-    ultimo = q;
-    atual = atual->prox;
+    ant->prox = p;
+    ant = p;
+    //printf("\n%d -> %d\n",n, ant->info);
   }
+
+  l->prox = NULL;
+
+  return ultimo;
 }
 
 void imprime(TLSE*l) {

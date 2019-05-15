@@ -21,7 +21,6 @@ int pop_pilha (TPilha *p);
 void libera_pilha (TPilha *p);
 int vazia_pilha (TPilha *p);
 void imprime_pilha (TPilha *p);
-
 // FILA
 typedef struct fila
 {
@@ -57,17 +56,23 @@ TFila* p2f (TPilha *p);
 // - G
 void separa_filas(TFila * f, TFila *par, TFila * impar);
 
+// - meu
+void inverte_fila(TFila *f);
+
+// - meu
+void ordena_fila(TFila *f);
+
 int main() {
 
   TFila *f = inicializa_fila();
   insere_fila(f,1);
-  insere_fila(f,2);
   insere_fila(f,3);
-  insere_fila(f,4);
+  insere_fila(f,2);
   insere_fila(f,5);
-  insere_fila(f,6);
+  insere_fila(f,4);
   insere_fila(f,7);
   insere_fila(f,8);
+  insere_fila(f,6);
 
   /*
   ====== A teste
@@ -129,6 +134,7 @@ int main() {
   imprime_fila(faux);
   */
 
+  /*
   // - G teste
 
   TFila *fp = inicializa_fila();
@@ -138,8 +144,72 @@ int main() {
   imprime_fila(f);
   imprime_fila(fp);
   imprime_fila(fi);
+  */
+
+  // - meu
+
+  //imprime_fila(f);
+  // ordena_fila(f);
+  // imprime_fila(f);
+
+  int vet[20];
+
+  int vet2[20];
+
+  printf("%d - %d",vet[15], vet2[15]);
 
   return 0;
+}
+
+void ordena_fila(TFila *f) {
+  TPilha* t1 = inicializa_pilha();
+  TPilha* t2 = inicializa_pilha();
+
+  while(!vazia_fila(f)) {
+    int menor = retira_fila(f);
+
+    while(!vazia_fila(f)) {
+      int aux = retira_fila(f);
+
+      if (aux > menor) {
+        push_pilha(t1,aux);
+      } else {
+        push_pilha(t1,menor);
+        menor = aux;
+      }
+    }
+    push_pilha(t2, menor);
+    while(!vazia_pilha(t1)) {
+      insere_fila(f,pop_pilha(t1));
+    }
+  }
+
+  while(!vazia_pilha(t2)){
+    push_pilha(t1,pop_pilha(t2));
+  }
+
+  while(!vazia_pilha(t1)){
+    insere_fila(f,pop_pilha(t1));
+  }
+
+  free(t1);
+  free(t2);
+}
+
+void inverte_fila(TFila *f) {
+
+  TPilha *t1 = inicializa_pilha();
+
+  while(!vazia_fila(f)) {
+    push_pilha(t1,retira_fila(f));
+  }
+
+  while(!vazia_pilha(t1)) {
+    insere_fila(f,pop_pilha(t1));
+  }
+
+  free(t1);
+  return;
 }
 
 /*
