@@ -66,5 +66,5 @@ int *soma_grande(int *v1, int *v2, int n) {
     vr[0] = 0;
   }
 
-  return vr;
+  //return vr;
 }
