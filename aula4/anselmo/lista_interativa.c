@@ -15,15 +15,58 @@ TLSE* inicializa();
 TLSE* ins_ini(TLSE *l, int x);
 TLSE* ins_fim(TLSE *l, int x);
 TLSE* ins_ord(TLSE *l, int x);
+TLSE* diferenca(TLSE* l1, TLSE* l2);
 void imprime(TLSE*l);
 
 int main(void) {
-  TLSE *l = inicializa();
-  l = ins_ini(l, 10);
-  l = ins_fim(l, 14);
-  l = ins_fim(l, 20);
-  l = ins_ord(l, 15);
-  imprime(l);
+  TLSE *l1 = inicializa();
+  l1 = ins_ini(l1, 10);
+  l1 = ins_fim(l1, 14);
+  l1 = ins_fim(l1, 20);
+  l1 = ins_fim(l1, 15);
+
+  TLSE *l2 = inicializa();
+  l2 = ins_fim(l2, 20);
+  l2 = ins_fim(l2, 15);
+  l2 = ins_fim(l2, 5);
+
+  TLSE *l3 = diferenca(l1, l2);
+  imprime(l3);
+
+  TLSE *l4 = diferenca(l2, l1);
+  imprime(l4);
+
+  for (int i = 0; i++; i<50){
+    printf("%d",i);
+  }
+}
+
+TLSE* diferenca(TLSE* l1, TLSE* l2) {
+
+  if (!l1) return NULL;
+  if (!l2) return l1;
+
+  TLSE *l3 = inicializa();
+
+  TLSE *p = l1, *q = NULL;
+
+  while(p) {
+    int d = 1;
+    q = l2;
+    while (q) {
+      if (q->info == p->info) {
+        d = 0;
+        break;
+      }
+      q = q->prox;
+    }
+    if (d) {
+      l3 = ins_fim(l3,p->info);
+    }
+    p = p->prox;
+  }
+
+  return l3;
 }
 
 void imprime(TLSE*l) {
