@@ -17,9 +17,9 @@ int main() {
   conta(vet, n);
 */
 
-  int n = 3;
-  int v1[] = {1,1,1};
-  int v2[] = {1,1,1};
+  int n = 25;
+  int v1[] = {1,1,1,8,7,8,7,9,7,8,9,7,0,4,2,4,5,9,1,2,4,5,6,7,8};
+  int v2[] = {1,1,1,8,7,8,7,9,7,8,9,7,0,4,2,4,5,9,1,2,4,5,6,7,8};
 
   int *vr = soma_grande(v1,v2,n);
 
@@ -66,5 +66,5 @@ int *soma_grande(int *v1, int *v2, int n) {
     vr[0] = 0;
   }
 
-  //return vr;
+  return vr;
 }
