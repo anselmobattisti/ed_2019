@@ -10,6 +10,8 @@ void libera(TAB* t);
 TAB* busca(TAB* t, int x);
 TAB* maior(TAB* t);
 TAB* menor(TAB* t);
+TAB* copiar(TAB* t);
+
 int altura(TAB* t);
 
 void imprime_pre(TAB* t);

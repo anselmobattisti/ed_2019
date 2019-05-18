@@ -26,8 +26,16 @@ int main() {
   t->dir->esq = cria_no(14);
   t->dir->dir = cria_no(16);
 
-  TAB *r = menor(t);
+  t->dir->dir->dir = cria_no(20);
+
+  TAB *r = copiar(t);
+
+  printf("\nOriginal");
+  print2DUtil(t,10);
+  printf("\n");
+  printf("\nCópia");
   print2DUtil(r,10);
+  printf("\n");
 
   /*
   TAB *r = busca(t,16);

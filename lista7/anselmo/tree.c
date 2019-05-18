@@ -24,6 +24,18 @@ TAB* cria_no(int x) {
   aux->dir = NULL;
 }
 
+TAB* copiar(TAB* t) {
+  if (t) {
+    TAB* aux = cria_no(t->info);
+    aux->esq = copiar(t->esq);
+    aux->dir = copiar(t->dir);
+    return aux;
+  } else {
+    return NULL;
+  }
+}
+
+
 void imprime_pre(TAB* t) {
   if (t) {
     printf(" %d, ",t->info);
