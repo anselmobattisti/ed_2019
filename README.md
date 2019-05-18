@@ -100,3 +100,5 @@ O sistema de avaliação da disciplina consiste na realização de duas provas (
   * 1 estrela: achou slide de todos os capítulos do livro do Ceres. http://www.inf.puc-rio.br/~inf1620/material.html
 * Samuel:
   * 1 estrela: pelas contribuições de natureza ampla que permitiram um upgrade no status quo intelectual dos membros da irmandade do whatsapp!
+* Bruno:
+  * compartilhou o link para o site https://www.cs.usfca.edu/~galles/visualization/AVLtree.html
