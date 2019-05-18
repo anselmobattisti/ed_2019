@@ -5,14 +5,21 @@ char* itoa(int i, char b[]);
 
 int main() {
 
-  for (int l = 3; l < 10000; l++) {
+  for (int l = 2; l < 10; l++) {
 
     char val[l];
+    char val2[l];
     for(int i = 0; i < l; i++) {
       val[i] = '1';
+      val2[i] = '9';
+    }
+
+    for(int i = 0; i < l; i++) {
+      printf("%c", val2[i]);
     }
 
     int result = atoi (val);
+    int result2 = atoi (val2);
 
     int v[10];
     for(int i = 0; i < 10; i++) {
@@ -21,8 +28,8 @@ int main() {
 
     char snum[l];
     char snum2[l];
-    for(int i = 1; i < 999; i++) {
-      int s = i+i+i;
+    for(int i = 1; i < result2; i++) {
+      int s = l*i;
       for(int k = 1; k <= 9; k++) {
         if (v[k] == s) {
           itoa(s, snum);
