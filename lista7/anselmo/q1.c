@@ -10,7 +10,6 @@ Escreva as seguintes funções:
 // (Q1) cópia de uma árvore: TAB* copia (TAB *a);
 
 #include <stdio.h>
-#include <stdlib.h>
 #include "tree.h"
 
 int main() {

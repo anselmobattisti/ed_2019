@@ -3,5 +3,5 @@ typedef struct ab{
   struct ab *esq, *dir;
 }TAB;
 
-TAB* inicializa() {}
-int algura(TAB* t);
+TAB* inicializa();
+int altura(TAB* t);

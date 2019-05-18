@@ -1,9 +1,10 @@
-#include "tree.h";
+#include "tree.h"
+#include <stdlib.h>
 
 TAB* inicializa() {
   return NULL;
 }
 
-int algura(TAB* t){
+int altura(TAB* t){
   return 0;
 }
