@@ -88,6 +88,29 @@ http://www.ic.uff.br/~rosseti/EDA_PG/2015-2/index.html
 ### Critério de avaliação
 O sistema de avaliação da disciplina consiste na realização de duas provas (P1 e P2) e de um trabalho computacional de grande porte (T). PX, PY e M são calculados como segue: PX = min{P1, P2}, PY = max{P1, P2} e M = {[(PX + T)/2] + PY}/2. Se M ≥ 6.0 e T ≥ 4.0, o aluno será aprovado e a média final (MF), isto é, a nota que consta no histórico escolar do discente será igual a M. Senão se T < 4.0, o aluno será reprovado com MF igual ao mínimo entre 5.9 e M. Senão, o aluno será reprovado com MF igual a M. As provas serão realizadas nos horários de aula.
 
+# Questões da prova P1
+
+* A primeira questão foi a criação de uma estrutura de prateleira e uma estrutura produto. A prateleira tinha um campo peso_total e o produto um campo peso. Foram 4 questões:
+a) definir a estrutura
+b) criar uma prateleira
+c) inserir um produto na prateleira desde que isso não deixasse o peso total da prateleira maior do que o limite dela
+e) remover um produto da prateleira
+
+* A segunda questão era dado um n e m, se existir no intervalo de uma lista duplamente encadeada n e m então os seus nós intermediários deviam trocar de lugar de forma inversa:
+ lista original a -> b -> c -> d -> e -> f
+ se n = c e m = f então a lista final dever ser
+ lista final a -> b -> c -> e -> d -> f
+
+* Em uma lista simples dado um número x, para cada ocorrência do número x trocar o seu anterior pelo seu próximo
+lista original a -> d -> c -> d -> e -> f
+seja n = d
+lista final primeiro n c -> d -> a -> d -> e -> f
+lista final segundo  n c -> d -> e -> d -> a -> f
+
+* quarta questão: não lembro
+
+* A quinta questão era o Josephus, qual é a posição que ele deve estar para sobreviver ao suicício coletivo.
+
 # Quadro de Estrelinhas
 
 * [Wilker](https://www.github.com/wilker "Wilker")
