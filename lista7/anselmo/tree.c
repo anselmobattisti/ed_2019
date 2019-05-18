@@ -9,6 +9,71 @@ TAB* inicializa() {
   return NULL;
 }
 
+int igual (TAB* a1, TAB* a2) {
+  if (!a1 && !a2) return 1;
+
+  if (!a1) return 0;
+  if (!a2) return 0;
+
+  if (a1->esq != NULL & a2->esq == NULL) return 0;
+  if (a1->esq == NULL & a2->esq != NULL) return 0;
+
+  if (a1->dir != NULL & a2->dir == NULL) return 0;
+  if (a1->dir == NULL & a2->dir != NULL) return 0;
+
+  if (a1->info == a2->info) {
+    return igual(a1->esq, a2->esq) && igual(a1->dir,a2->dir);
+  } else {
+    return 0;
+  }
+}
+
+TAB* retira_pares (TAB* t) {
+  if (!t) return NULL;
+
+  if (t->esq) {
+    t->esq = retira_pares(t->esq);
+  }
+
+  if (t->dir) {
+    t->dir = retira_pares(t->dir);
+  }
+
+  if (t->info % 2 == 0)
+    t = retira(t,t->info);
+
+  return t;
+}
+
+int nf(TAB *t) {
+  if (!t) return 0;
+
+  if (t->esq == NULL && t->dir == NULL) return 1;
+
+  return nf(t->esq) + nf(t->dir);
+}
+
+int ni(TAB *t) {
+  if (!t) return 0;
+  if (t->esq == NULL && t->dir == NULL) return 0;
+
+  return ni(t->esq) + ni(t->dir) + 1;
+}
+
+TAB* espelho (TAB *t) {
+  if (!t) return NULL;
+  if (!t->esq && !t->dir) return t;
+
+  TAB* aux_e = t->esq;
+  t->esq = t->dir;
+  t->dir = aux_e;
+
+  t->esq = espelho(t->esq);
+  t->dir = espelho(t->dir);
+
+  return t;
+}
+
 TAB* retira(TAB* t, int x) {
 
   if (t->info < x) {
@@ -27,6 +92,23 @@ TAB* retira(TAB* t, int x) {
       return NULL;
     }
 
+    /*
+    // jeito da prof
+    if (!t->esq || !t->dir) {
+      TAB *f;
+      if (!t->esq) f = t->dir;
+      if (!t->dir) f = t->esq;
+      free(t);
+      return f;
+    } else {
+      // pega o menor da esquerda
+      TAB *maior_esq = maior(t->esq);
+      t->info = maior_esq->info;
+      t->esq = retira(t->esq,t->info);
+      return t;
+    }
+    */
+
     // segunda possibilidade, 1 filho
     if (t->esq) {
       // pega o menor da esquerda
@@ -42,6 +124,7 @@ TAB* retira(TAB* t, int x) {
       t->dir = retira(t->dir,t->info);
       return t;
     }
+
   }
 
   return t;
@@ -148,7 +231,7 @@ int altura(TAB* t){
 
 TAB* maior(TAB* t) {
 
-  if (!t || (!t->esq && !t->dir)) return t;
+  if (!t || (!t->dir)) return t;
 
   return maior(t->dir);
 }

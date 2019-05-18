@@ -22,21 +22,38 @@ int main() {
   t = inserir(t,4);
   t = inserir(t,15);
   t = inserir(t,21);
+  t = inserir(t,16);
 
+  print_tree(t,"Original");
+  printf("\nNúmero de folhas: %d\n",nf(t));
+  printf("\nNúmero de nós internos: %d\n",ni(t));
+
+  /*
+  print_tree(t,"Original");
+  print_tree(retira_pares(t),"Original");
+
+  print_tree(t,"Original");
+  t = retira(t,10);
+  print_tree(t,"Original");
+
+  TAB* copia = copiar(t);
+
+  printf("Iguais? %d\n",igual(t,copia));
+
+  print_tree(t,"Original");
+  print_tree(espelho(t),"Espelho");
 
   print_tree(t,"Original");
 
   t = retira(t,20);
   print_tree(t,"Sem o 20");
 
-  /*
 
   t = retira(t,4);
   t = retira(t,3);
   print2DUtil(t,0);
   printf("\n");
 
-  printf("%d",altura(t));
 
   printf("\nMaior");
   TAB* m = menor(t->esq);
