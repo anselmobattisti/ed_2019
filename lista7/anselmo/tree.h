@@ -11,6 +11,8 @@ TAB* busca(TAB* t, int x);
 TAB* maior(TAB* t);
 TAB* menor(TAB* t);
 TAB* copiar(TAB* t);
+TAB* inserir(TAB* t, int x);
+TAB* retira(TAB* t, int x);
 
 int altura(TAB* t);
 
@@ -18,4 +20,5 @@ void imprime_pre(TAB* t);
 void imprime_pos(TAB* t);
 void imprime_sim(TAB* t);
 
+void print_tree(TAB* t, char* title);
 void print2DUtil(TAB *root, int space);

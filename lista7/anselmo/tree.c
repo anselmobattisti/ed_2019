@@ -9,6 +9,44 @@ TAB* inicializa() {
   return NULL;
 }
 
+TAB* retira(TAB* t, int x) {
+
+  if (t->info < x) {
+    t->dir = retira(t->dir,x);
+  }
+
+  if (t->info > x) {
+    t->esq = retira(t->esq,x);
+  }
+
+  // achou o nó
+  if (t->info == x) {
+    // primeira possibilidade, 0 filhos
+    if (!t->esq && !t->dir) {
+      free(t);
+      return NULL;
+    }
+
+    // segunda possibilidade, 1 filho
+    if (t->esq) {
+      // pega o menor da esquerda
+      TAB *maior_esq = maior(t->esq);
+      t->info = maior_esq->info;
+      t->esq = retira(t->esq,t->info);
+      return t;
+    }
+
+    if (t->dir && !t->esq) {
+      TAB *menor_dir = menor(t->dir);
+      t->info = menor_dir->info;
+      t->dir = retira(t->dir,t->info);
+      return t;
+    }
+  }
+
+  return t;
+}
+
 void libera(TAB* t) {
   if (t) {
     libera(t->esq);
@@ -73,27 +111,46 @@ TAB* busca(TAB* t, int x) {
   return busca(t->dir, x);
 }
 
+TAB* inserir(TAB* t, int x) {
+  if (!t) {
+    return cria_no(x);
+  }
+
+  if (t->info > x) {
+    t->esq = inserir(t->esq, x);
+  }
+
+  if (t->info < x) {
+    t->dir = inserir(t->dir, x);
+  }
+
+  return t;
+}
+
 int altura(TAB* t){
-  return 0;
+  if (!t->esq && !t->dir) return 0;
+
+  int a_esq = 0;
+  int a_dir = 0;
+
+  if (t->esq)
+    a_esq = altura(t->esq)+1;
+
+  if (t->dir)
+    a_dir = altura(t->dir)+1;
+
+  if (a_esq > a_dir){
+    return a_esq;
+  } else {
+    return a_dir;
+  }
 }
 
 TAB* maior(TAB* t) {
 
-  if (!t) return NULL;
+  if (!t || (!t->esq && !t->dir)) return t;
 
-  TAB* maior_esq = maior(t->esq);
-  TAB* maior_dir = maior(t->dir);
-  TAB* resp = t;
-
-  if (maior_esq && maior_esq->info > resp->info) {
-    resp = maior_esq;
-  }
-
-  if (maior_dir && maior_dir->info > resp->info) {
-    resp = maior_dir;
-  }
-
-  return resp;
+  return maior(t->dir);
 }
 
 TAB* menor(TAB* t) {
@@ -115,10 +172,15 @@ TAB* menor(TAB* t) {
   return resp;
 }
 
+void print_tree(TAB* t, char* title) {
+  printf("\n -----------> %s",title);
+  print2DUtil(t,0);
+  printf("\n <-----------\n");
+}
+
 // Function to print binary tree in 2D
 // It does reverse inorder traversal
-void print2DUtil(TAB *root, int space)
-{
+void print2DUtil(TAB *root, int space){
     // Base case
     if (root == NULL)
         return;

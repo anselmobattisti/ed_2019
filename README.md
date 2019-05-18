@@ -107,7 +107,9 @@ seja n = d
 lista final primeiro n c -> d -> a -> d -> e -> f
 lista final segundo  n c -> d -> e -> d -> a -> f
 
-* quarta questão: não lembro
+* quarta questão: escrever a sequência 1, 2, ..., x antes e depois de cada ocorrência de x na lista
+seja x = 2 e a lista 1 -> 2 -> 3 -> 2 o resultado será
+1 -> 1 -> 2 -> 2 -> 3 -> 1 -> 2 -> 2
 
 * A quinta questão era o Josephus, qual é a posição que ele deve estar para sobreviver ao suicício coletivo.
 

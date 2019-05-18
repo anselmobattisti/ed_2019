@@ -15,18 +15,32 @@ Escreva as seguintes funções:
 int main() {
   TAB* t = inicializa();
 
-  // 10,5,15,4,6,14,16
-  t = cria_no(10);
-  t->esq = cria_no(5);
-  t->dir = cria_no(15);
+  t = inserir(t,10);
+  t = inserir(t,20);
+  t = inserir(t,5);
+  t = inserir(t,3);
+  t = inserir(t,4);
+  t = inserir(t,15);
+  t = inserir(t,21);
 
-  t->esq->esq = cria_no(4);
-  t->esq->dir = cria_no(6);
 
-  t->dir->esq = cria_no(14);
-  t->dir->dir = cria_no(16);
+  print_tree(t,"Original");
 
-  t->dir->dir->dir = cria_no(20);
+  t = retira(t,20);
+  print_tree(t,"Sem o 20");
+
+  /*
+
+  t = retira(t,4);
+  t = retira(t,3);
+  print2DUtil(t,0);
+  printf("\n");
+
+  printf("%d",altura(t));
+
+  printf("\nMaior");
+  TAB* m = menor(t->esq);
+  printf(" %d ",m->info);
 
   TAB *r = copiar(t);
 
@@ -37,7 +51,6 @@ int main() {
   print2DUtil(r,10);
   printf("\n");
 
-  /*
   TAB *r = busca(t,16);
 
 
