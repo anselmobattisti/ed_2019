@@ -1,5 +1,6 @@
 typedef struct ab{
   int info;
+  int cor;
   struct ab *esq, *dir;
 }TAB;
 
@@ -16,6 +17,7 @@ TAB* retira(TAB* t, int x);
 TAB* espelho (TAB *a);
 TAB* retira_pares (TAB* t);
 
+void colore (TAB* arv);
 int altura(TAB* t);
 int igual (TAB* a1, TAB* a2);
 int nf(TAB *a);

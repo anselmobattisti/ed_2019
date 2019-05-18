@@ -9,6 +9,29 @@ TAB* inicializa() {
   return NULL;
 }
 
+void colore (TAB* t) {
+  if (!t) return;
+
+  if (!t->esq && !t->dir) {
+    t->cor = 1;
+    return;
+  }
+
+  colore(t->esq);
+  colore(t->dir);
+
+  if (t->esq || t->dir) {
+    int cor = 1;
+    if (t->dir) {
+      cor = !t->dir->cor;
+    }
+    if (t->esq) {
+      cor = !t->esq->cor;
+    }
+    t->cor = cor;
+  }
+}
+
 int igual (TAB* a1, TAB* a2) {
   if (!a1 && !a2) return 1;
 
@@ -279,7 +302,7 @@ void print2DUtil(TAB *root, int space){
     printf("\n");
     for (int i = COUNT; i < space; i++)
         printf(" ");
-    printf("%d\n", root->info);
+    printf("(%d,%d)\n", root->info, root->cor);
 
     // Process left child
     print2DUtil(root->esq, space);
