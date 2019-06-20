@@ -41,7 +41,6 @@ static int max( int l, int r){
 static no* rot_dir( no* k2, int tab ){
     if (tab)
       printf("\t -");
-
     printf("RSD\n");
     no* k1 = NULL;
     k1 = k2->esq;
@@ -56,7 +55,6 @@ static no* rot_dir( no* k2, int tab ){
 static no* rot_esq( no* k1, int tab ){
     if (tab)
       printf("\t -");
-
     printf("RSE\n");
     no* k2;
     k2 = k1->dir;
@@ -278,8 +276,14 @@ int main(int argc, char *argv[]){
   imprime(arvore);
 
   while(num != -1){
+    printf("\nDigite o numero a ser inserido ou -9 para retirar ou -1 para sair -> ");
     scanf("%i", &num);
-    arvore = insere(num, arvore);
+    if(num == -9){
+        printf("Digite o numero a ser retirado -> ");
+        scanf("%i", &num);
+        retira(num, arvore);
+    } else
+        arvore = insere(num, arvore);
     imprime(arvore);
     printf("\n\n");
   }
