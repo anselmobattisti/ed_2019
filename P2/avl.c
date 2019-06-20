@@ -144,6 +144,7 @@ void imprime_aux(no *a, int andar){
 
 
 void imprime(no *a){
+  printf("\n---------------\n");
   imprime_aux(a, 1);
 }
 
@@ -204,6 +205,8 @@ int main(int argc, char *argv[]){
   struct no * arvore = NULL;
   int num = 0, from, to;
 
+  /* Exercício 1-a
+  // -----------------------
   arvore = insere(1, arvore);
   arvore = insere(64, arvore);
   arvore = insere(12, arvore);
@@ -213,8 +216,67 @@ int main(int argc, char *argv[]){
   arvore = insere(95, arvore);
   arvore = insere(58, arvore);
   arvore = insere(59, arvore);
+  arvore = insere(70, arvore);
+  arvore = insere(68, arvore);
+  arvore = insere(39, arvore);
+  arvore = insere(62, arvore);
+  arvore = insere(7, arvore);
+  arvore = insere(60, arvore);
+  arvore = insere(43, arvore);
+  arvore = insere(16, arvore);
+  arvore = insere(67, arvore);
+  arvore = insere(34, arvore);
+  arvore = insere(35, arvore);
+  */
+
+  /* Exercício 1-b
+  // -----------------------
+  imprime(arvore);
+  arvore = retira(95, arvore);
+  arvore = retira(70, arvore);
+  arvore = retira(60, arvore);
+  arvore = retira(35, arvore);
+  imprime(arvore);
+  */
+
+  /* Exercício 2-a
+  // -----------------------
+  */
+  arvore = insere(61, arvore);
+  arvore = insere(34, arvore);
+  arvore = insere(78, arvore);
+  arvore = insere(19, arvore);
+  arvore = insere(47, arvore);
+  arvore = insere(64, arvore);
+  arvore = insere(87, arvore);
+  arvore = insere(15, arvore);
+  arvore = insere(29, arvore);
+  arvore = insere(42, arvore);
+  arvore = insere(53, arvore);
+  arvore = insere(76, arvore);
+  arvore = insere(84, arvore);
+  arvore = insere(13, arvore);
+  arvore = insere(17, arvore);
+  arvore = insere(32, arvore);
+
+  // exercicio 2 - a
+  arvore = insere(1, arvore);
+  arvore = insere(65, arvore);
+  arvore = insere(12, arvore);
+  arvore = insere(18, arvore);
+  arvore = insere(66, arvore);
+  arvore = insere(38, arvore);
+  arvore = insere(95, arvore);
+  arvore = insere(58, arvore);
+  arvore = insere(59, arvore);
+  arvore = insere(70, arvore);
+  arvore = insere(68, arvore);
+  arvore = insere(39, arvore);
+  arvore = insere(62, arvore);
+  arvore = insere(60, arvore);
 
   imprime(arvore);
+
   while(num != -1){
     scanf("%i", &num);
     arvore = insere(num, arvore);
