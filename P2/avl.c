@@ -38,8 +38,11 @@ static int max( int l, int r){
 }
 
 
-static no* rot_dir( no* k2 ){
-    printf("\nRSD");
+static no* rot_dir( no* k2, int tab ){
+    if (tab)
+      printf("\t -");
+
+    printf("RSD\n");
     no* k1 = NULL;
     k1 = k2->esq;
     k2->esq = k1->dir;
@@ -50,8 +53,11 @@ static no* rot_dir( no* k2 ){
 }
 
 
-static no* rot_esq( no* k1 ){
-    printf("\nRSE");
+static no* rot_esq( no* k1, int tab ){
+    if (tab)
+      printf("\t -");
+
+    printf("RSE\n");
     no* k2;
     k2 = k1->dir;
     k1->dir = k2->esq;
@@ -63,18 +69,16 @@ static no* rot_esq( no* k1 ){
 
 
 static no* rot_esq_dir( no* k3 ){
-    printf("\nRED");
-    printf("\n----\n");
-    k3->esq = rot_esq( k3->esq );
-    return rot_dir( k3 );
+    printf("\nRED\n");
+    k3->esq = rot_esq( k3->esq, 1);
+    return rot_dir( k3, 1 );
 }
 
 
 static no* rot_dir_esq( no* k1 ){
-    printf("\nRDE");
-    printf("\n----\n");
-    k1->dir = rot_dir( k1->dir );
-    return rot_esq( k1 );
+    printf("\nRDE\n");
+    k1->dir = rot_dir( k1->dir, 1);
+    return rot_esq( k1, 1);
 }
 
 
@@ -88,14 +92,14 @@ no* insere(int e, no* t ){
         t->esq = insere( e, t->esq );
         if( calc_alt( t->esq ) - calc_alt( t->dir ) == 2 )
             if( e < t->esq->info )
-                t = rot_dir( t );
+                t = rot_dir( t, 0 );
             else
                 t = rot_esq_dir( t );
     } else if( e > t->info ){
         t->dir = insere( e, t->dir );
         if( calc_alt( t->dir ) - calc_alt( t->esq ) == 2 )
             if( e > t->dir->info )
-                t = rot_esq( t );
+                t = rot_esq( t, 0 );
             else
                 t = rot_dir_esq( t );
     }
@@ -153,7 +157,7 @@ no * retira(int x, no *T){
             T->dir=retira(x,T->dir);
             if(FB(T)==2)
                 if(FB(T->esq)>=0)
-                    T=rot_dir(T);
+                    T=rot_dir(T,0);
                 else
                     T=rot_esq_dir(T);
         }
@@ -162,7 +166,7 @@ no * retira(int x, no *T){
                     T->esq=retira(x,T->esq);
                     if(FB(T)==-2)//Rebalance during windup
                         if(FB(T->dir)<=0)
-                            T=rot_esq(T);
+                            T=rot_esq(T,0);
                         else
                             T=rot_dir_esq(T);
             }
@@ -175,7 +179,7 @@ no * retira(int x, no *T){
                       T->esq=retira(p->info, T->esq);
                       if(FB(T)== -2)//Rebalance during windup
                         if(FB(T->dir)<=0)
-                            T=rot_esq(T);
+                            T=rot_esq(T,0);
                         else
                             T=rot_dir_esq(T);
                   }
