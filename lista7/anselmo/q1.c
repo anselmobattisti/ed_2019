@@ -26,7 +26,7 @@ int main() {
   t = inserir(t,25);
   t = inserir(t,2);
 
-  colore(t);
+  //colore(t);
 
   print_tree(t,"Original");
   printf("\nNúmero de folhas: %d\n",nf(t));
