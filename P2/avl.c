@@ -298,7 +298,7 @@ int main(int argc, char *argv[]){
     if(num == -9){
         printf("Digite o numero a ser retirado -> ");
         scanf("%i", &num);
-        retira(num, arvore);
+        arvore = retira(num, arvore);
     } else
         arvore = insere(num, arvore);
     imprime(arvore);
