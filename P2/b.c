@@ -282,6 +282,30 @@ TAB* retira(TAB* arv, int k, int t){
 int main(int argc, char *argv[]){
   TAB * arvore = Inicializa();
   int num = 0, from, to;
+
+  arvore = Insere(arvore, 20, t);
+  arvore = Insere(arvore, 50, t);
+  arvore = Insere(arvore, 60, t);
+
+  arvore = Insere(arvore, 1, t);
+  arvore = Insere(arvore, 64, t);
+  arvore = Insere(arvore, 12, t);
+  arvore = Insere(arvore, 18, t);
+  arvore = Insere(arvore, 66, t);
+  arvore = Insere(arvore, 38, t);
+  arvore = Insere(arvore, 95, t);
+  arvore = Insere(arvore, 58, t);
+  arvore = Insere(arvore, 59, t);
+  arvore = Insere(arvore, 70, t);
+  arvore = Insere(arvore, 68, t);
+  arvore = Insere(arvore, 39, t);
+  arvore = Insere(arvore, 62, t);
+  arvore = Insere(arvore, 7, t);
+  arvore = Insere(arvore, 55, t);
+  arvore = Insere(arvore, 43, t);
+  arvore = Insere(arvore, 16, t);
+  arvore = Insere(arvore, 67, t);
+
   while(num != -1){
     printf("Digite um numero para adicionar. 0 para imprimir. -9 para remover e -1 para sair\n");
     scanf("%i", &num);
