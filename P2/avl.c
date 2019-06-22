@@ -239,7 +239,6 @@ int main(int argc, char *argv[]){
 
   /* Exercício 2-a
   // -----------------------
-  */
   arvore = insere(61, arvore);
   arvore = insere(34, arvore);
   arvore = insere(78, arvore);
@@ -272,7 +271,25 @@ int main(int argc, char *argv[]){
   arvore = insere(39, arvore);
   arvore = insere(62, arvore);
   arvore = insere(60, arvore);
+  arvore = insere(60, arvore);
 
+  imprime(arvore);
+  */
+
+  arvore = insere(1, arvore);
+  arvore = insere(65, arvore);
+  arvore = insere(12, arvore);
+  arvore = insere(18, arvore);
+  arvore = insere(66, arvore);
+  arvore = insere(38, arvore);
+  arvore = insere(95, arvore);
+  arvore = insere(58, arvore);
+  arvore = insere(59, arvore);
+  arvore = insere(70, arvore);
+  arvore = insere(68, arvore);
+  arvore = insere(39, arvore);
+  arvore = insere(62, arvore);
+  arvore = insere(60, arvore);
   imprime(arvore);
 
   while(num != -1){
