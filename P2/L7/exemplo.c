@@ -46,6 +46,23 @@ int alt(TAB* a) {
   return alt_d;
 }
 
+int profundidade(TAB* a, int x, int prof) {
+  if (a) {
+    if (a->info == x) {
+      return prof;
+    }
+    return profundidade(a->esq, x, prof+1)+profundidade(a->dir, x, prof+1);
+  }
+}
+
+int balanceada_avl(TAB* a) {
+  if (!a) return 1;
+  int alt_e = alt(a->esq);
+  int alt_dir = alt(a->dir);
+  if (abs(alt_e - alt_dir) >= 2) return 0;
+  return balanceada_avl(a->esq) && balanceada_avl(a->dir);
+}
+
 int main() {
 
   TAB *t = inicializa();
@@ -66,9 +83,15 @@ int main() {
   printf("\n - Pares: %d\n", conta_pares(t));
   printf("\n - Apenas Um Filho: %d\n", um_filho(t));
 
-  int acha_sucessor = 3;
+  int acha_sucessor = 9;
   sucessor(t,acha_sucessor,&s);
   printf("\n - Sucessor de %d: %d\n",acha_sucessor, s);
 
   printf("\n - Altura: %d\n", alt(t));
+
+  int prof = profundidade(t, acha_sucessor, 0);
+  printf("\n - Produndidade: %d\n", prof);
+
+  printf("\n - AVL: %d\n", balanceada_avl(t));
+
 }
