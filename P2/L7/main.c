@@ -18,6 +18,8 @@ int igual2 (TAB *a, TAB *b);
 int nf2(TAB *a);
 void ancestrais(TAB *a, int x);
 
+int pares(TAB* a);
+
 int estritamente_balanceada(TAB *a);
 
 int apenas_um_filho(TAB *a);
@@ -28,6 +30,9 @@ void sucessor_aux(TAB *a, TLSE** maiores, int x);
 
 int sucessor_ab(TAB *a, int x);
 int sucessor_ab2(TAB *a, int x);
+
+int ext(TAB* a);
+int is_tabb(TAB *a);
 
 int main(){
   TAB *t = inicializa();
@@ -73,17 +78,59 @@ int main(){
 
   TAB *t3 = inicializa();
 
-  t3 = inserir(t3,6);
+  //t3 = inserir(t3,6);
   t3 = inserir(t3,4);
   t3 = inserir(t3,1);
-  t3 = inserir(t3,5);
+  t3 = inserir(t3,2);
 
-  print2DUtil(t3,2);
+  print2DUtil(t,2);
 
-  printf("\n ab - %d", sucessor(t3,5));
-  printf("\n abb1 - %d", sucessor_ab(t3,5));
-  printf("\n abb2 - %d", sucessor_ab2(t3,5));
+  // printf("\n ab - %d", sucessor(t3,5));
+  // printf("\n abb1 - %d", sucessor_ab(t3,5));
+  // printf("\n abb2 - %d", sucessor_ab2(t3,5));
+
+  // printf("\n pares - %d", pares(t3));
+  // printf("\n ext - %d", ext(t3));
+
+  //print2DUtil(t,0);
+  //ancestrais(t,4);
+
+  printf("\n TABB - %d", is_tabb(t));
 }
+
+int is_tabb_aux_maior(TAB *a, int k) {
+  if (!a) return 0;
+  if (a->info > k) return 1;
+  return is_tabb_aux_maior(a->esq, k) && is_tabb_aux_maior(a->dir, k);
+}
+
+int is_tabb_aux_menor(TAB *a, int k) {
+  if (!a) return 0;
+  if (a->info < k) return 1;
+  return is_tabb_aux_menor(a->esq, k) && is_tabb_aux_menor(a->dir, k);
+}
+
+int is_tabb(TAB *a) {
+
+  if (!a) return 1;
+
+  return !(is_tabb_aux_maior(a->esq, a->info) && is_tabb_aux_menor(a->dir, a->info));
+
+}
+
+int ext(TAB* a) {
+  if (!a) return 1;
+  if ((a->esq && !a->dir) || (!a->esq && a->dir)) return 0;
+  return ext(a->esq) && ext(a->dir);
+}
+
+int pares(TAB* a) {
+  if (!a) return 0;
+  int p = 0;
+  if (a->info % 2 == 0) p = 1;
+  return pares(a->esq) + pares(a->dir) + p;
+}
+
 
 int sucessor_ab(TAB *a, int x) {
   while (a) {
@@ -146,7 +193,6 @@ void sucessor_aux(TAB *a, TLSE **maiores, int x) {
 
 int apenas_um_filho(TAB *a) {
   if (!a) return 0;
-
   return apenas_um_filho_aux(a->esq) && apenas_um_filho_aux(a->dir);
 }
 
@@ -154,8 +200,6 @@ int apenas_um_filho_aux(TAB *a) {
   if (!a || (!a->esq && !a->dir)) {
     return 1;
   }
-
-
   if (a->esq && a->dir) {
     return 0;
   }
