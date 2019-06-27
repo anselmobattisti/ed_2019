@@ -299,6 +299,7 @@ int main(int argc, char *argv[]){
   TAB * arvore = Inicializa();
   int num = 0, from, to;
   printf("\n\nO T é %d \n\n",t);
+
   /* exemplo */
   arvore = Insere(arvore, 1, t);
   arvore = Insere(arvore, 2, t);
@@ -313,8 +314,6 @@ int main(int argc, char *argv[]){
   arvore = Insere(arvore, 11, t);
   arvore = Insere(arvore, 12, t);
   arvore = Insere(arvore, 13, t);
-
-  /*
   arvore = Insere(arvore, 14, t);
   arvore = Insere(arvore, 15, t);
   arvore = Insere(arvore, 16, t);
@@ -323,7 +322,7 @@ int main(int argc, char *argv[]){
   arvore = Insere(arvore, 19, t);
   arvore = Insere(arvore, 20, t);
   arvore = Insere(arvore, 21, t);
-  */
+
   /* exer 1
   arvore = Insere(arvore, 50, t);
   arvore = Insere(arvore, 60, t);
