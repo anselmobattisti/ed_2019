@@ -155,7 +155,6 @@ int apenas_um_filho_aux(TAB *a) {
     return 1;
   }
 
-
   if (a->esq && a->dir) {
     return 0;
   }
