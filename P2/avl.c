@@ -275,7 +275,7 @@ int main(int argc, char *argv[]){
 
   imprime(arvore);
   */
-
+/*
   arvore = insere(1, arvore);
   arvore = insere(65, arvore);
   arvore = insere(12, arvore);
@@ -289,7 +289,20 @@ int main(int argc, char *argv[]){
   arvore = insere(68, arvore);
   arvore = insere(39, arvore);
   arvore = insere(62, arvore);
+  arvore = insere(10, arvore);
+  arvore = insere(20, arvore);
+  arvore = insere(30, arvore);
+  arvore = insere(40, arvore);
+  arvore = insere(50, arvore);
   arvore = insere(60, arvore);
+  */
+
+  arvore = insere(30, arvore);
+  arvore = insere(11, arvore);
+  arvore = insere(40, arvore);
+  arvore = insere(10, arvore);
+  arvore = insere(20, arvore);
+//  arvore = insere(12, arvore);
   imprime(arvore);
 
   while(num != -1){

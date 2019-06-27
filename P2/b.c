@@ -34,19 +34,17 @@ TAB *Libera(TAB *a){
   }
 }
 
-
 void Imprime(TAB *a, int andar){
   if(a){
     int i,j;
     for(i=0; i<=a->nchaves-1; i++){
       Imprime(a->filho[i],andar+1);
-      for(j=0; j<=andar; j++) printf("   ");
-      printf("%d\n", a->chave[i]);
+      for(j=0; j<=andar; j++) printf("---");
+      printf("->%d\n", a->chave[i]);
     }
     Imprime(a->filho[i],andar+1);
   }
 }
-
 
 TAB *Busca(TAB* x, int ch){
   TAB *resp = NULL;
@@ -141,6 +139,7 @@ TAB* remover(TAB* arv, int ch, int t){
       int j;
       for(j=i; j<arv->nchaves-1;j++) arv->chave[j] = arv->chave[j+1];
       arv->nchaves--;
+      Imprime(arv,0);
       return arv;
     }
     if(!arv->folha && arv->filho[i]->nchaves >= t){ //CASO 2A
@@ -148,6 +147,10 @@ TAB* remover(TAB* arv, int ch, int t){
       TAB *y = arv->filho[i];  //Encontrar o predecessor k' de k na árvore com raiz em y
       while(!y->folha) y = y->filho[y->nchaves];
       int temp = y->chave[y->nchaves-1];
+
+
+      Imprime(arv,0);
+
       arv->filho[i] = remover(arv->filho[i], temp, t);
       //Eliminar recursivamente K e substitua K por K' em x
       arv->chave[i] = temp;
@@ -158,6 +161,9 @@ TAB* remover(TAB* arv, int ch, int t){
       TAB *y = arv->filho[i+1];  //Encontrar o sucessor k' de k na árvore com raiz em y
       while(!y->folha) y = y->filho[0];
       int temp = y->chave[0];
+
+      Imprime(arv,0);
+
       y = remover(arv->filho[i+1], temp, t); //Eliminar recursivamente K e substitua K por K' em x
       arv->chave[i] = temp;
       return arv;
@@ -179,6 +185,9 @@ TAB* remover(TAB* arv, int ch, int t){
         arv->filho[j] = arv->filho[j+1];
       arv->filho[j] = NULL; //Campello
       arv->nchaves--;
+
+      Imprime(arv,0);
+
       arv->filho[i] = remover(arv->filho[i], ch, t);
       return arv;
     }
@@ -200,6 +209,7 @@ TAB* remover(TAB* arv, int ch, int t){
       for(j=0; j < z->nchaves; j++)       //ajustar filhos de z
         z->filho[j] = z->filho[j+1];
       z->nchaves--;
+      Imprime(arv,0);
       arv->filho[i] = remover(arv->filho[i], ch, t);
       return arv;
     }
@@ -216,6 +226,9 @@ TAB* remover(TAB* arv, int ch, int t){
       arv->chave[i-1] = z->chave[z->nchaves-1];   //dar a arv uma chave de z
       y->filho[0] = z->filho[z->nchaves];         //enviar ponteiro de z para o novo elemento em y
       z->nchaves--;
+
+      Imprime(arv,0);
+
       arv->filho[i] = remover(y, ch, t);
       return arv;
     }
@@ -240,6 +253,7 @@ TAB* remover(TAB* arv, int ch, int t){
           arv->filho[j+1] = arv->filho[j+2];
         }
         arv->nchaves--;
+        Imprime(arv,0);
         arv = remover(arv, ch, t);
         return arv;
       }
@@ -263,11 +277,13 @@ TAB* remover(TAB* arv, int ch, int t){
         }
         arv->nchaves--;
         arv->filho[i-1] = z;
+        Imprime(arv,0);
         arv = remover(arv, ch, t);
         return arv;
       }
     }
   }
+  Imprime(arv,0);
   arv->filho[i] = remover(arv->filho[i], ch, t);
   return arv;
 }
@@ -282,11 +298,34 @@ TAB* retira(TAB* arv, int k, int t){
 int main(int argc, char *argv[]){
   TAB * arvore = Inicializa();
   int num = 0, from, to;
+  printf("\n\nO T é %d \n\n",t);
 
+  /* exemplo */
+  arvore = Insere(arvore, 1, t);
+  arvore = Insere(arvore, 2, t);
+  arvore = Insere(arvore, 3, t);
+  arvore = Insere(arvore, 4, t);
+  arvore = Insere(arvore, 5, t);
+  arvore = Insere(arvore, 6, t);
+  arvore = Insere(arvore, 7, t);
+  arvore = Insere(arvore, 8, t);
+  arvore = Insere(arvore, 9, t);
+  arvore = Insere(arvore, 10, t);
+  arvore = Insere(arvore, 11, t);
+  arvore = Insere(arvore, 12, t);
+  arvore = Insere(arvore, 13, t);
+  arvore = Insere(arvore, 14, t);
+  arvore = Insere(arvore, 15, t);
+  arvore = Insere(arvore, 16, t);
+  arvore = Insere(arvore, 17, t);
+  arvore = Insere(arvore, 18, t);
+  arvore = Insere(arvore, 19, t);
   arvore = Insere(arvore, 20, t);
+  arvore = Insere(arvore, 21, t);
+
+  /* exer 1
   arvore = Insere(arvore, 50, t);
   arvore = Insere(arvore, 60, t);
-
   arvore = Insere(arvore, 1, t);
   arvore = Insere(arvore, 64, t);
   arvore = Insere(arvore, 12, t);
@@ -305,7 +344,15 @@ int main(int argc, char *argv[]){
   arvore = Insere(arvore, 43, t);
   arvore = Insere(arvore, 16, t);
   arvore = Insere(arvore, 67, t);
+  arvore = Insere(arvore, 34, t);
+  arvore = Insere(arvore, 35, t);
 
+  Imprime(arvore,1);
+
+  // arvore = retira(arvore, 95, t);
+
+  // (b) retire os elementos {50, 95, 70, 60, 35} desta árvore, explicitando as operações.
+  */
   while(num != -1){
     printf("Digite um numero para adicionar. 0 para imprimir. -9 para remover e -1 para sair\n");
     scanf("%i", &num);

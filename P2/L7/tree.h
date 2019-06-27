@@ -4,6 +4,26 @@ typedef struct ab{
   struct ab *esq, *dir;
 }TAB;
 
+typedef struct cad
+{
+  char nome[50];
+  char fone[50];
+}TCAD;
+
+typedef struct tree_cad{
+  int id;
+  TCAD* cadastro;
+  struct ab *esq, *dir;
+}TTREE_CAD;
+
+
+
+typedef struct ab2{
+  int info;
+  int cor;
+  struct ab *esq, *dir;
+}TAB;
+
 TAB* inicializa();
 TAB* cria_no(int x);
 void libera(TAB* t);
