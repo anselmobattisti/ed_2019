@@ -63,6 +63,17 @@ int balanceada_avl(TAB* a) {
   return balanceada_avl(a->esq) && balanceada_avl(a->dir);
 }
 
+int maior_valor(TAB* a, int maior) {
+  if (!a) return 0;
+
+  if (a->info > maior) {
+    maior = a->info;
+  }
+
+  maior_valor(a->esq, maior);
+  maior_valor(a->dir, maior);
+}
+
 int main() {
 
   TAB *t = inicializa();
