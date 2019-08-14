@@ -112,18 +112,3 @@ seja x = 2 e a lista 1 -> 2 -> 3 -> 2 o resultado será
 1 -> 1 -> 2 -> 2 -> 3 -> 1 -> 2 -> 2
 
 * A quinta questão era o Josephus, qual é a posição que ele deve estar para sobreviver ao suicício coletivo.
-
-# Quadro de Estrelinhas
-
-* [Wilker](https://www.github.com/wilker "Wilker")
-  * 1 estrela: 'grande contribuição sobre entrada de dados via arquivos'
-* Ricardo Machado;
-  * 1 estrela: compartilhamento de compilador online de C https://repl.it/languages/c;
-* Jane:
-  * 1 estrela: muito gentilmente tirou fotos do livro de C para a galera
-* Raissa:
-  * 1 estrela: achou slide de todos os capítulos do livro do Ceres. http://www.inf.puc-rio.br/~inf1620/material.html
-* Samuel:
-  * 1 estrela: pelas contribuições de natureza ampla que permitiram um upgrade no status quo intelectual dos membros da irmandade do whatsapp!
-* Bruno:
-  * compartilhou o link para o site https://www.cs.usfca.edu/~galles/visualization/AVLtree.html
